@@ -14,7 +14,7 @@ class ExtrahopApi:
         self.token = None
     
     def load_customer(self):
-        self.customer = input("請輸入客戶名稱(netfos, realtek...): ")
+        self.customer = input("請輸入客戶名稱: ")
         while True:
             with open("customers.txt", "r") as fr:
                 customers = fr.read().strip("\n")

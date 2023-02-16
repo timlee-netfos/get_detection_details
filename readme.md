@@ -1,4 +1,4 @@
-# Module Installation
+# Modules Installation
 
 - installl modules
 ```powershell
@@ -9,7 +9,7 @@ $ pip install -r requirements.txt
 - generate a new ".env" file in "lib" directory
 - configuration
 	- vt_API_KEY:
-		- register virustotal and get api key
+		- sign up virustotal and get api key
 		- standard free api key has a limitation of 500 lookups / day
 	- {customer}_HOST: 
 		- The hostname of the Reveal(x) 360 API displayed in the Reveal(x) 360 API Access page under API Endpoint (api endpoint but not include the /oauth/token)

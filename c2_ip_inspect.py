@@ -48,10 +48,12 @@ for d in c2_detections:
             offender.append(p["object_value"])
 
 print("working on ---> virustotal query")
+vt_dfs = []
 for ip in offender:
     if ipaddress.ip_address(ip).is_private==False:
         vt_df = virustotal_api.virustotal_Ip(ip).T 
-        ip_df = pd.concat([ip_df, vt_df], axis=0, ignore_index=True)
+        vt_dfs.append(vt_df)
+ip_df = pd.concat(vt_dfs)
 
 ip_df = ip_df.set_index('ip')
 ip_df.to_csv(f"c2_ip_record/{API.start_time}~{API.end_time}.csv")
