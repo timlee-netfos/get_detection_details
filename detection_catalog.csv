@@ -1,0 +1,505 @@
+,display_name,mitre_categories,author,type,is_user_created,properties
+0,Connection_behavior,['T1102'],sherry.zhang@netfos.com.tw,Connection_behavior,True,{}
+1,AAA Auth Errors,[],ExtraHop,aaa_auth_errors,False,{}
+2,Spike in AAA Failed Login Attempts,['T1110'],ExtraHop,aaa_brute_force,False,{}
+3,Data Exfiltration to S3 Bucket,"['T1537', 'T1567.002']",ExtraHop,abnormal_s3_upload,False,"{'s3_bucket': {'is_optional': True, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}}"
+4,Unusual User Creation,['T1136.002'],ExtraHop,abnormal_user_creation,False,{}
+5,Database Data Staging,"['T1048', 'T1114', 'T1114.002']",ExtraHop,abnormally_large_database_response,False,{}
+6,New Printer Driver Installation Request,"['T1068', 'T1210']",ExtraHop,add_printer_driver,False,{}
+7,Anonymous FTP Auth Enabled,"['T1105', 'T1078']",ExtraHop,anonymous_ftp,False,"{'user': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+8,Anonymous FTP Authentication Enabled,"['T1105', 'T1078']",ExtraHop,anonymous_ftp_individual,False,"{'user': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}}"
+9,Apache HTTP Server Path Traversal Exploit,['T1083'],ExtraHop,apache_http_server_path_traversal,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'targeted_file': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+10,Apache Struts 2 Exploit Attempt,['T1190'],ExtraHop,apache_struts2_exploit_attempt,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'ognl_fragments': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+11,Attempted Connections Dropped,[],ExtraHop,attempted_connections_dropped,False,{}
+12,AWS Instance Metadata Service (IMDS) Proxy,['T1552.005'],ExtraHop,aws_imds_proxying,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+13,AWS Cloud Service Enumeration,['T1526'],ExtraHop,aws_services_enumeration,False,{}
+14,BITS Download,['T1197'],ExtraHop,bits_download,False,"{'file': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+15,BitTorrent Activity,[],ExtraHop,bittorrent_activity,False,{}
+16,Suspicious SSL/TLS Certificates,[],ExtraHop,blacklisted_cert,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+17,BloodHound Enumeration Activity,"['T1087.001', 'T1087.002', 'T1560', 'T1059.001', 'T1482', 'T1106', 'T1201', 'T1069.001', 'T1069.002', 'T1018', 'T1033']",ExtraHop,bloodhound_enumeration_activity,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+18,Command-and-Control Beaconing,"['T1571', 'T1029', 'T1102', 'T1104', 'T1008', 'T1573', 'T1001', 'T1132', 'T1205', 'T1176']",ExtraHop,c2_web_beaconing,False,"{'registered_domain_name': {'is_optional': True, 'status': 'active', 'is_tunable': False, 'data_type': 'string'}}"
+19,Caldera C&C Download,[],ExtraHop,caldera_c2_initial_download,False,"{'agent': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+20,Caldera C&C Manx Beaconing,"['T1071.001', 'T1132.001', 'T1571']",ExtraHop,caldera_c2_manx,False,"{'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+21,Caldera C&C Ragdoll Beaconing,"['T1071.001', 'T1132.001', 'T1571']",ExtraHop,caldera_c2_ragdoll,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+22,Caldera C&C Sandcat Beaconing,"['T1071.001', 'T1132.001', 'T1571']",ExtraHop,caldera_c2_sandcat,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+23,Call Does Not Exist Error,[],ExtraHop,call_does_not_exist_error,False,{}
+24,SMB/CIFS Transaction Delays,[],ExtraHop,cifs_round_trip_time,False,{}
+25,Cisco CDP Exploit Attempt,['T1210'],ExtraHop,cisco_cdp_vulnerabilities,False,{}
+26,Citrix Issues,[],ExtraHop,citrix_issues,False,{}
+27,Cobalt Strike Beacon Transfer,"['T1570', 'T1021.002']",ExtraHop,cobalt_strike_beacon_transfer,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+28,Cobalt Strike DNS Beaconing,['T1071'],ExtraHop,cobalt_strike_c2_dns,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+29,Cobalt Strike C&C HTTP Connection,['T1071.001'],ExtraHop,cobalt_strike_c2_http,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+30,Cobalt Strike C&C SSL/TLS Connection,['T1071.001'],ExtraHop,cobalt_strike_c2_tls,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+31,Suspicious File Download on Critical Server,[],ExtraHop,crit_server_suspicious_download,False,{}
+32,Cryptocurrency Mining,['T1496'],ExtraHop,cryptocurrency_mining,False,{}
+33,DNS Request for a Cryptocurrency Mining Pool,['T1496'],ExtraHop,cryptomining_pool_dns_request,False,{}
+34,SSL/TLS Connection to a Cryptocurrency Mining Pool,['T1496'],ExtraHop,cryptomining_pool_ssl_connection,False,{}
+35,Custom,[],ExtraHop,customer_detection_template,False,{}
+36,CVE-2017-12635 Apache CouchDB Exploit Attempt,"['T1210', 'T1068']",ExtraHop,cve_2017_12635,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+37,CVE-2017-9805 Apache Struts 2 Exploit Attempt,['T1190'],ExtraHop,cve_2017_9805,False,"{'command': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+38,CVE-2018-1111 Red Hat DHCP Exploit Attempt,"['T1210', 'T1203']",ExtraHop,cve_2018_1111,False,"{'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+39,CVE-2018-13379 Fortinet FortiOS Exploit,"['T1190', 'T1210', 'T1212', 'T1555', 'T1552.001']",ExtraHop,cve_2018_13379,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+40,CVE-2018-15961 Adobe ColdFusion Exploit Attempt,['T1210'],ExtraHop,cve_2018_15961,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+41,Drupal Exploit Attempt,['T1190'],ExtraHop,cve_2018_7600,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+42,CVE-2019-0193 Apache Solr Exploit Attempt,['T1210'],ExtraHop,cve_2019_0193,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+43,CVE-2019-0604 Microsoft SharePoint Exploit Attempt,"['T1190', 'T1505']",ExtraHop,cve_2019_0604,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+44,CVE-2019-0708 RDP Exploit Attempt,['T1210'],ExtraHop,cve_2019_0708,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+45,CVE-2019-10149 Exim Exploit Attempt,['T1210'],ExtraHop,cve_2019_10149,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'smtp_recipient': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+46,CVE-2019-11510 Pulse Connect Secure Exploit Attempt,"['T1210', 'T1190', 'T1133', 'T1003.008']",ExtraHop,cve_2019_11510,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'accessed_path': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+47,CVE-2019-11580 Atlassian Crowd Exploit,['T1210'],ExtraHop,cve_2019_11580,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+48,CVE-2019-15846 Exim Exploit Attempt,"['T1210', 'T1190']",ExtraHop,cve_2019_15846,False,"{'ssl_sni': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+49,CVE-2019-17558 Apache Solr Exploit,['T1210'],ExtraHop,cve_2019_17558,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+50,CVE-2019-19781 Citrix ADC and Gateway Exploit,"['T1210', 'T1133']",ExtraHop,cve_2019_19781_exploit,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+51,CVE-2019-19781 Citrix ADC and Gateway Scan,['T1210'],ExtraHop,cve_2019_19781_scan,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+52,Oracle WebLogic Exploit,['T1556'],ExtraHop,cve_2019_2725,False,{}
+53,CVE-2019-8394 Zoho ManageEngine Exploit Attempt,"['T1505.003', 'T1210']",ExtraHop,cve_2019_8394,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+54,CVE-2019-9670 Synacor Zimbra Collaboration Suite Exploit Attempt,"['T1190', 'T1212']",ExtraHop,cve_2019_9670,False,"{'xxe_uri': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+55,CVE-2020-0601 Windows CryptoAPI ECC Validation Vulnerability,['T1557'],ExtraHop,cve_2020_0601,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+56,CVE-2020-0796 Windows 10 SMBv3 Exploit Attempt,['T1210'],ExtraHop,cve_2020_0796,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+57,CVE-2020-10189 Zoho ManageEngine Exploit,"['T1210', 'T1190']",ExtraHop,cve_2020_10189,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+58,CVE-2020-11651 Salt Exploit Attempt,"['T1190', 'T1210', 'T1212']",ExtraHop,cve_2020_11651,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+59,CVE-2020-12695 UPnP Exploit Attempt,"['T1190', 'T1210', 'T1046', 'T1048', 'T1498']",ExtraHop,cve_2020_12695,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'callback_ipaddr': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'ipaddrArray'}}"
+60,CVE-2020-1301 SMBv1 Exploit,"['T1210', 'T1068']",ExtraHop,cve_2020_1301,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+61,CVE-2020-1350 SIGRed Exploit Attempt,"['T1203', 'T1210']",ExtraHop,cve_2020_1350,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+62,CVE-2020-1472 Zerologon Scan,"['T1068', 'T1210']",ExtraHop,cve_2020_1472,False,{}
+63,CVE-2020-1472 Zerologon Exploit Attempt,"['T1068', 'T1210']",ExtraHop,cve_2020_1472_exploit,False,{}
+64,CVE-2020-15505 MobileIron Core and Connector Exploit Attempt,['T1190'],ExtraHop,cve_2020_15505,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+65,CVE-2020-16898 Windows TCP/IP Stack Exploit Attempt,['T1210'],ExtraHop,cve_2020_16898,False,{}
+66,CVE-2020-16899 Windows TCP/IP Stack Exploit Attempt,"['T1210', 'T1499.004']",ExtraHop,cve_2020_16899,False,{}
+67,CVE-2020-17051 Windows NFS Exploit Attempt,"['T1529', 'T1135']",ExtraHop,cve_2020_17051,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+68,CVE-2020-1938 Ghostcat Exploit,"['T1190', 'T1210']",ExtraHop,cve_2020_1938,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+69,CVE-2020-25577 FreeBSD Exploit Attempt,['T1210'],ExtraHop,cve_2020_25577,False,{}
+70,CVE-2020-25583 FreeBSD Exploit Attempt,['T1210'],ExtraHop,cve_2020_25583,False,{}
+71,CVE-2020-3952 VMware vCenter Exploit,['T1210'],ExtraHop,cve_2020_3952,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+72,CVE-2020-5902 F5 BIG-IP Exploit,"['T1190', 'T1210']",ExtraHop,cve_2020_5902,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+73,CVE-2020-6207 SAP Solution Manager Exploit Attempt,"['T1068', 'T1210', 'T1127', 'T1018']",ExtraHop,cve_2020_6207,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+74,CVE-2020-6287 SAP RECON Vulnerability,"['T1190', 'T1133', 'T1136']",ExtraHop,cve_2020_6287,False,{}
+75,CVE-2020-7247 OpenSMTPD Exploit,['T1210'],ExtraHop,cve_2020_7247,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'smtp_sender': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+76,CVE-2021-1497 Cisco HyperFlex HX Exploit Attempt,"['T1210', 'T1059']",ExtraHop,cve_2021_1497,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+77,CVE-2021-1498 Cisco HyperFlex HX Exploit Attempt,"['T1210', 'T1059']",ExtraHop,cve_2021_1498,False,"{'command': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+78,CVE-2021-21972 VMware vCenter Exploit,"['T1210', 'T1505.003']",ExtraHop,cve_2021_21972_exploit,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+79,CVE-2021-21972 VMware vCenter Scan,['T1046'],ExtraHop,cve_2021_21972_scan,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+80,CVE-2021-21974 VMware ESXi OpenSLP Exploit Attempt,"['T1210', 'T1046']",ExtraHop,cve_2021_21974,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+81,CVE-2021-21985 VMware vCenter Exploit,"['T1210', 'T1068', 'T1505']",ExtraHop,cve_2021_21985,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+82,CVE-2021-22005 VMware vCenter Exploit,"['T1190', 'T1210']",ExtraHop,cve_2021_22005,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+83,CVE-2021-22006 VMware vCenter Exploit,"['T1190', 'T1210']",ExtraHop,cve_2021_22006,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+84,CVE-2021-22205 GitLab CE and EE Exploit Attempt,['T1210'],ExtraHop,cve_2021_22205,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'remote_command': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+85,CVE-2021-22893 Pulse Connect Secure Exploit Attempt,"['T1210', 'T1190']",ExtraHop,cve_2021_22893,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+86,CVE-2021-22986 F5 BIG-IP and BIG-IQ Exploit,"['T1190', 'T1210', 'T1059.004']",ExtraHop,cve_2021_22986,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'remote_command': {'is_optional': True, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+87,CVE-2021-22991 F5 BIG-IP Exploit,"['T1190', 'T1210', 'T1499.004', 'T1005', 'T1529']",ExtraHop,cve_2021_22991,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+88,CVE-2021-26084 Atlassian Confluence Exploit,"['T1210', 'T1190']",ExtraHop,cve_2021_26084,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+89,CVE-2021-26432 Windows NFS ONCRPC Exploit Attempt,['T1210'],ExtraHop,cve_2021_26432,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+90,CVE-2021-26877 Windows DNS Server Exploit Attempt,['T1210'],ExtraHop,cve_2021_26877,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+91,CVE-2021-26897 Windows DNS Server Exploit Attempt,['T1210'],ExtraHop,cve_2021_26897,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+92,CVE-2021-28324 Windows 10 SMBv3 Exploit,['T1133'],ExtraHop,cve_2021_28324,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+93,CVE-2021-31166 Windows HTTP Stack Exploit Attempt,"['T1210', 'T1190']",ExtraHop,cve_2021_31166,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+94,CVE-2021-31181 Microsoft SharePoint Exploit Attempt,"['T1190', 'T1210', 'T1212', 'T1213.002']",ExtraHop,cve_2021_31181,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+95,CVE-2021-34467 Microsoft SharePoint Exploit Attempt,"['T1546', 'T1505.003']",ExtraHop,cve_2021_34467,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+96,Microsoft Exchange Server Exploits,"['T1210', 'T1068']",ExtraHop,cve_2021_34473,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+97,CVE-2021-34527 Windows Print Spooler Exploit Attempt,"['T1068', 'T1210']",ExtraHop,cve_2021_34527,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+98,CVE-2021-35211 SolarWinds Serv-U SSH Exploit Attempt,"['T1190', 'T1133']",ExtraHop,cve_2021_35211,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+99,CVE-2021-35394 Realtek SDK Exploit Attempt,['T1210'],ExtraHop,cve_2021_35394,False,"{'sender_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'receiver_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'remote_command': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+100,CVE-2021-35395 Realtek SDK Exploit Attempt,['T1210'],ExtraHop,cve_2021_35395,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'remote_command': {'is_optional': True, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+101,CVE-2021-38647 OMIGOD Exploit,"['T1190', 'T1210']",ExtraHop,cve_2021_38647,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+102,CVE-2021-42321 Microsoft Exchange Exploit Attempt,"['T1210', 'T1190']",ExtraHop,cve_2021_42321,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+103,CVE-2021-43798 Grafana Exploit Attempt,['T1190'],ExtraHop,cve_2021_43798,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'targeted_file': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+104,CVE-2021-44077 Zoho ManageEngine Exploit Attempt,"['T1210', 'T1190']",ExtraHop,cve_2021_44077,False,"{'file': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+105,Log4Shell JNDI Injection Attempt by a Scanner,['T1190'],ExtraHop,cve_2021_44228_jndi_injection_attempt,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'jndi_strings': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+106,Log4Shell JNDI Injection Attempt,['T1190'],ExtraHop,cve_2021_44228_jndi_injection_attempt_non_scanner,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'jndi_strings': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+107,Outbound Log4Shell Activity,['T1190'],ExtraHop,cve_2021_44228_outbound_activity,False,{}
+108,CVE-2022-0543 Redis Exploit,"['T1059', 'T1068', 'T1210', 'T1211']",ExtraHop,cve_2022_0543,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'remote_command': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+109,CVE-2022-1388 F5 BIG-IP Exploit,"['T1190', 'T1210', 'T1059.004']",ExtraHop,cve_2022_1388,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'remote_command': {'is_optional': True, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+110,CVE-2022-21907 Windows HTTP Stack Exploit Attempt,"['T1210', 'T1499']",ExtraHop,cve_2022_21907,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+111,CVE-2022-22947 Spring Cloud Gateway Exploit Attempt,['T1190'],ExtraHop,cve_2022_22947,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'remote_commands': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+112,CVE-2022-22954 VMware Workspace ONE Access and Identity Manager Exploit Attempt,['T1210'],ExtraHop,cve_2022_22954,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'remote_command': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+113,CVE-2022-22963 Spring Cloud Function Exploit Attempt,['T1190'],ExtraHop,cve_2022_22963,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'remote_commands': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+114,CVE-2022-26134 Atlassian Confluence Exploit,"['T1210', 'T1190']",ExtraHop,cve_2022_26134,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'ognl_fragments': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+115,CVE-2022-26923 Active Directory Domain Services Exploit Attempt,"['T1078', 'T1068', 'T1550']",ExtraHop,cve_2022_26923,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+116,CVE-2022-29464 WSO2 Exploit Attempt,['T1190'],ExtraHop,cve_2022_29464,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'malicious_file': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+117,CVE-2022-30190 Follina Exploit Attempt,"['T1203', 'T1204.002']",ExtraHop,cve_2022_30190,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+118,CVE-2022-33891 Apache Spark Exploit Attempt,['T1190'],ExtraHop,cve_2022_33891,False,"{'command': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+119,VPN Client Data Exfiltration,['T1048'],ExtraHop,data_exfil_by_vpn,False,{}
+120,Data Exfiltration,"['T1011', 'T1020', 'T1041', 'T1030', 'T1029', 'T1048', 'T1567']",ExtraHop,data_exfiltration,False,{}
+121,Data Transfer Issues,[],ExtraHop,data_transfer_issues,False,{}
+122,Database Brute Force,['T1110'],ExtraHop,database_brute_force,False,{}
+123,Database Data Deletion Activity,['T1485'],ExtraHop,database_data_deletion,False,{}
+124,Database Enumeration,['T1213'],ExtraHop,database_enumeration,False,{}
+125,Database Issues,[],ExtraHop,database_issues,False,{}
+126,Database Takeover Attack,['T1569'],ExtraHop,database_takeover,False,{}
+127,Database Transaction Failures,['T1110'],ExtraHop,database_transaction_failures,False,{}
+128,Poor Database Performance,[],ExtraHop,db_processing_spike,False,{}
+129,DCOM Remote Command Launch,['T1021.003'],ExtraHop,dcom_lateral_movement,False,{}
+130,DCShadow Attack,['T1207'],ExtraHop,dcshadow,False,{}
+131,DCSync Attack,['T1003'],ExtraHop,dcsync,False,{}
+132,Delayed Citrix Data Transfer,['T1498'],ExtraHop,delayed_citrix_data_transfer,False,{}
+133,Delayed Data Transfer,['T1498'],ExtraHop,delayed_data_transfer,False,{}
+134,Delayed Database Data Transfer,['T1498'],ExtraHop,delayed_database_data_transfer,False,{}
+135,Delayed Email Data Transfer,['T1498'],ExtraHop,delayed_email_data_transfer,False,{}
+136,Delayed FTP Data Transfer,[],ExtraHop,delayed_ftp_data_transfer,False,{}
+137,Delayed HTTP Data Transfer,['T1498'],ExtraHop,delayed_http_data_transfer,False,{}
+138,Delayed IP Address Configuration,[],ExtraHop,delayed_ip_address_configuration,False,{}
+139,Delayed Kerberos Auth,[],ExtraHop,delayed_kerberos_auth,False,{}
+140,Delayed Kerberos Data Transfer,['T1498'],ExtraHop,delayed_kerberos_data_transfer,False,{}
+141,Delayed LDAP Auth,[],ExtraHop,delayed_ldap_auth,False,{}
+142,Delayed LDAP Data Transfer,['T1498'],ExtraHop,delayed_ldap_data_transfer,False,{}
+143,Delayed Memcache Data Transfer,['T1498'],ExtraHop,delayed_memcache_data_transfer,False,{}
+144,Delayed Redis Data Transfer,['T1498'],ExtraHop,delayed_redis_data_transfer,False,{}
+145,Delayed Web Services,[],ExtraHop,delayed_web_services,False,{}
+146,Delayed WiFi Auth,[],ExtraHop,delayed_wifi_auth,False,{}
+147,Deprecated SSL/TLS Versions,[],ExtraHop,deprecated_ssl_tls_individual,False,"{'version': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}}"
+148,DHCP Decline Error,[],ExtraHop,dhcp_decline_error,False,{}
+149,DHCP Errors,[],ExtraHop,dhcp_errors,False,{}
+150,DHCP Issues,[],ExtraHop,dhcp_issues,False,{}
+151,DHCP Restart Error,[],ExtraHop,dhcp_restart_error,False,{}
+152,DNS Brute Force,['T1018'],ExtraHop,dns_brute_force,False,{}
+153,DNS Errors,[],ExtraHop,dns_errors,False,{}
+154,DNS Internal Reverse Lookup Scan,['T1018'],ExtraHop,dns_internal_reverse_lookup_scan,False,{}
+155,DNS Issues,[],ExtraHop,dns_issues,False,{}
+156,DNS Lookup Failures,[],ExtraHop,dns_lookup_failures,False,{}
+157,DNS Rebinding,[],ExtraHop,dns_rebind,False,"{'new_addr': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'ipaddr'}, 'old_addrs': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'ipaddrArray'}, 'query_name': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+158,DNS Request Timeouts,"['T1498', 'T1499']",ExtraHop,dns_request_timeouts,False,{}
+159,DNS Timeouts,"['T1498', 'T1499']",ExtraHop,dns_timeouts,False,{}
+160,DNS Tunnel,"['T1048', 'T1030']",ExtraHop,dns_tunnel,False,"{'registered_domain_name': {'is_optional': True, 'status': 'active', 'is_tunable': False, 'data_type': 'string'}}"
+161,DNS Zone Transfer,['T1016'],ExtraHop,dns_zone_transfer,False,{}
+162,Domain Fronting,['T1090.004'],ExtraHop,domain_fronting,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+163,Domain Generation Algorithm,['T1568.002'],ExtraHop,domain_generation_algorithm,False,"{'registered_domain_name': {'is_optional': True, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}}"
+164,DGA Domain Resolution,['T1568.002'],ExtraHop,domain_generation_algorithm_resolved,False,"{'registered_domain_names': {'is_optional': True, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+165,DGA Domain Queries,['T1568.002'],ExtraHop,domain_generation_algorithm_unresolved,False,{}
+166,Domain Trust Enumeration,['T1482'],ExtraHop,domain_trust_enumeration,False,{}
+167,Domain Trusts Enumeration,['T1482'],ExtraHop,domain_trusts_enumeration,False,{}
+168,DoublePulsar RDP Implant,"['T1001', 'T1071', 'T1105', 'T1132', 'T1573', 'T1001.003', 'T1132.002']",ExtraHop,doublepulsar_rdp_implant,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+169,DoublePulsar RDP Scan,['T1046'],ExtraHop,doublepulsar_rdp_scan,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+170,DoublePulsar SMB/CIFS Implant Activity,"['T1001', 'T1071', 'T1105', 'T1132', 'T1573', 'T1001.003', 'T1132.002']",ExtraHop,doublepulsar_smb_implant,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+171,DoublePulsar SMB/CIFS Scan,['T1046'],ExtraHop,doublepulsar_smb_scan,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+172,Email Errors,[],ExtraHop,email_errors,False,{}
+173,Email Issues,[],ExtraHop,email_issues,False,{}
+174,Email Mailbox Unavailable Error,[],ExtraHop,email_mailbox_unavailable_error,False,{}
+175,Email Service Unavailable Error,[],ExtraHop,email_service_unavailable_error,False,{}
+176,Empire C&C HTTP Connection,['T1071.001'],ExtraHop,empire_c2_http,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+177,Empire C&C SSL/TLS Connection,['T1071.001'],ExtraHop,empire_c2_tls,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+178,EternalBlue Exploit,['T1210'],ExtraHop,eternalblue_exploit,False,{}
+179,Overlapping IP Fragmentation,['T1562'],ExtraHop,excessive_ip_fragmentation,False,{}
+180,Experimental Detection,[],ExtraHop,experimental,False,{}
+181,Experimental Detection for Protocol Activity,[],ExtraHop,experimentalMetric,False,{}
+182,Experimental Detection for a Single Metric,[],ExtraHop,experimentalMetricAnomaly,False,{}
+183,Experimental Detection for a Single Source,[],ExtraHop,experimentalSource,False,{}
+184,Expired SSL Server Certificates,[],ExtraHop,expired_cert,False,"{'certificate': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'stringArray'}}"
+185,Expired SSL/TLS Server Certificate,[],ExtraHop,expired_cert_individual,False,"{'certificate': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}}"
+186,Expiring SSL/TLS Server Certificate,[],ExtraHop,expiring_cert_individual,False,"{'certificate': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}}"
+187,Certificate Expiration Warning,[],,expiring_certificate,True,{}
+188,Unusual Archive File Download,['T1204'],ExtraHop,external_archive_file_download,False,{}
+189,Request to External Database Server,[],ExtraHop,external_db_req,False,{}
+190,Unusual Executable File Download,['T1204'],ExtraHop,external_exec_file_download,False,"{'exec_file_types': {'is_optional': True, 'status': 'active', 'is_tunable': True, 'data_type': 'stringArray'}}"
+191,Unusual Executable Script Download,['T1204'],ExtraHop,external_executable_script_download,False,{}
+192,Request to External LDAP Server,"['T1071', 'T1040', 'T1041', 'T1048']",ExtraHop,external_ldap_req,False,{}
+193,Request to External NFS Server,['T1204'],ExtraHop,external_nfs_req,False,{}
+194,New SSH Device,"['T1200', 'T1021']",ExtraHop,external_ssh_new_device,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+195,File Access Failure,[],ExtraHop,file_access_failure,False,{}
+196,FTP Access Denied Error,[],ExtraHop,ftp_access_denied_error,False,{}
+197,FTP Bad Syntax Error,[],ExtraHop,ftp_bad_syntax_error,False,{}
+198,FTP Brute Force,['T1110'],ExtraHop,ftp_brute_force,False,{}
+199,FTP Brute Force with Successful Login,"['T1110.001', 'T1110.003']",ExtraHop,ftp_brute_force_success_login,False,{}
+200,FTP Errors,[],ExtraHop,ftp_errors,False,{}
+201,FTP File Transfer Issues,[],ExtraHop,ftp_file_transfer_issues,False,{}
+202,FTP Not Logged in Error,['T1110'],ExtraHop,ftp_not_logged_in_error,False,{}
+203,Group Policy Preferences (GPP) Password Enumeration,['T1552.006'],ExtraHop,gpp_password_enumeration,False,{}
+204,Hacking Tool Domain Access,[],ExtraHop,hacking_tools,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'hacking_tool_name': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}}"
+205,High Citrix Latency,[],ExtraHop,high_citrix_latency,False,{}
+206,Unusual Host Connection from a High Value Device,"['T1095', 'T1071']",ExtraHop,high_value_device_unusual_host,False,{}
+207,Unusual Protocol Connection from a High Value Device,"['T1095', 'T1071']",ExtraHop,high_value_device_unusual_protocol,False,{}
+208,HTTP 400 Status Codes,[],ExtraHop,http_400_status_codes,False,{}
+209,HTTP Bad Requests,[],ExtraHop,http_bad_requests,False,{}
+210,HTTP Brute Force Activity,['T1110'],ExtraHop,http_brute_force,False,{}
+211,HTTP Desync Attack,['T1210'],ExtraHop,http_desync_attack,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+212,HTTP Errors,[],ExtraHop,http_errors,False,{}
+213,HTTP Forbidden,[],ExtraHop,http_forbidden,False,{}
+214,HTTP Gateway Timeout Error,"['T1498', 'T1499']",ExtraHop,http_gateway_timeout_error,False,{}
+215,HTTP Internal Error,[],ExtraHop,http_internal_error,False,{}
+216,HTTP Method Scan,[],ExtraHop,http_method_scan,False,{}
+217,HTTP Not Found,[],ExtraHop,http_not_found,False,{}
+218,HTTP Path Traversal Attempt,"['T1210', 'T1190', 'T1212']",ExtraHop,http_path_traversal,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+219,Credentials Sent over HTTP,[],ExtraHop,http_plaintext_password_client,False,{}
+220,Credentials Sent over HTTP,[],ExtraHop,http_plaintext_password_client_individual,False,{}
+221,Credentials Received over HTTP,[],ExtraHop,http_plaintext_password_server,False,{}
+222,Credentials Received over HTTP,[],ExtraHop,http_plaintext_password_server_individual,False,{}
+223,HTTP Service Unavailable Error,[],ExtraHop,http_service_unavailable_error,False,{}
+224,ICMP Tunnel,['T1095'],ExtraHop,icmp_tunnel,False,{}
+225,Impacket SMBExec Activity,"['T1021', 'T1569']",ExtraHop,impacket_smbexec,False,"{'command': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+226,Impacket WMIExec Activity,"['T1021', 'T1047']",ExtraHop,impacket_wmiexec,False,"{'command': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+227,Inbound Connection from a Cobalt Strike IP Address,['T1071.001'],ExtraHop,inbound_cobalt_strike_connection,False,{}
+228,Inbound Connection from a Cobalt Strike IP Address,['T1071.001'],ExtraHop,inbound_cobalt_strike_connection_individual,False,{}
+229,Inbound Tor Node Connections,['T1090'],ExtraHop,inbound_tor_connection,False,"{'tor_node': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'ipaddrArray'}}"
+230,Inbound Connection from a Tor Node,['T1090'],ExtraHop,inbound_tor_connection_individual,False,{}
+231,Unusual Interactive Traffic from a Remote Desktop,"['T1572', 'T1104', 'T1008', 'T1573', 'T1205', 'T1219']",ExtraHop,interactive_traffic_remote_desktop,False,{}
+232,Unusual Interactive Traffic from an External Endpoint,"['T1059', 'T1505.003', 'T1572', 'T1104', 'T1008', 'T1573', 'T1205', 'T1219']",ExtraHop,interactive_traffic_shell,False,{}
+233,Remote Control SSH Traffic,"['T1572', 'T1104', 'T1008', 'T1573', 'T1205', 'T1219']",ExtraHop,interactive_traffic_ssh,False,{}
+234,Interrupted Citrix Data Transfer,['T1498'],ExtraHop,interrupted_citrix_data_transfer,False,{}
+235,Default Kali Linux SSH Keys,[],ExtraHop,kali_ssh_server_key,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+236,REvil C&C Activity (Kaseya Supply Chain),[],ExtraHop,kaseya_ml,False,{}
+237,REvil Suspicious Connection (Kaseya Supply Chain),"['T1195', 'T1195.002', 'T1486', 'T1490']",ExtraHop,kaseya_ml_ip,False,{}
+238,Kaseya VSA Activity,"['T1195', 'T1195.002', 'T1486', 'T1490']",ExtraHop,kaseya_vsa,False,{}
+239,Kerberos Attack Tool Activity,"['T1550.002', 'T1078', 'T1021']",ExtraHop,kerberos_attack_tool_activity,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+240,Kerberos Auth Errors,[],ExtraHop,kerberos_auth_errors,False,{}
+241,Kerberos Auth Issues,[],ExtraHop,kerberos_auth_issues,False,{}
+242,Kerberos Brute Force,['T1110'],ExtraHop,kerberos_brute_force,False,{}
+243,Kerberos Duplicate Sessions Errors,[],ExtraHop,kerberos_duplicate_sessions_errors,False,{}
+244,Kerberos Expired Password Errors,[],ExtraHop,kerberos_expired_password_errors,False,{}
+245,Kerberos Golden Ticket Attack,"['T1558.001', 'T1550.003', 'T1078']",ExtraHop,kerberos_golden_ticket_attack,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+246,Kerberos Invalid Ticket Errors,[],ExtraHop,kerberos_invalid_ticket_errors,False,{}
+247,Kerberos Policy Errors,[],ExtraHop,kerberos_policy_errors,False,{}
+248,Kerberos Revoked Credentials Errors,"['T1110', 'T1531']",ExtraHop,kerberos_revoked_credentials_errors,False,{}
+249,Kerberos Service Unknown Errors,[],ExtraHop,kerberos_service_unknown_errors,False,{}
+250,Kerberos Silver Ticket Attack,"['T1558.002', 'T1550.003', 'T1078']",ExtraHop,kerberos_silver_ticket_attack,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+251,Kerberos Sync Errors,[],ExtraHop,kerberos_sync_errors,False,{}
+252,Kerberos Ticket Errors,[],ExtraHop,kerberos_ticket_errors,False,{}
+253,Kerberos Unknown Service Errors,[],ExtraHop,kerberos_unknown_service_errors,False,{}
+254,Kerberos User Enumeration,['T1087'],ExtraHop,kerberos_user_enumeration,False,{}
+255,Kerberos Wrong Password Errors,"['T1110', 'T1531']",ExtraHop,kerberos_wrong_password_errors,False,{}
+256,Domain Workstation Enumeration,['T1018'],ExtraHop,ldap_all_workstation_enum,False,{}
+257,AS-REP Roasting Activity,['T1558'],ExtraHop,ldap_as_rep_activity,False,{}
+258,LDAP Auth Error,[],ExtraHop,ldap_auth_error,False,{}
+259,LDAP Auth Errors,[],ExtraHop,ldap_auth_errors,False,{}
+260,LDAP Auth Issues,[],ExtraHop,ldap_auth_issues,False,{}
+261,LDAP Wildcard Query,['T1087'],ExtraHop,ldap_client_any_attribute_enum,False,{}
+262,LDAP Computer Enumeration,['T1018'],ExtraHop,ldap_computer_enum,False,{}
+263,LDAP GPO Enumeration,['T1615'],ExtraHop,ldap_gpo_enumeration,False,{}
+264,LDAP Invalid Credentials Error,"['T1110', 'T1531']",ExtraHop,ldap_invalid_credentials_error,False,{}
+265,All Object Enumeration,['T1087'],ExtraHop,ldap_object_enum,False,{}
+266,LDAP Operational Error,[],ExtraHop,ldap_operational_error,False,{}
+267,LDAP Protocol Error,[],ExtraHop,ldap_protocol_error,False,{}
+268,LDAP SPN Scan,['T1087'],ExtraHop,ldap_spn_scan,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+269,LDAP User Enumeration,['T1087'],ExtraHop,ldap_user_enum,False,{}
+270,LLMNR Activity,[],ExtraHop,llmnr_activity_individual,False,{}
+271,LLMNR Poisoning,['T1557.001'],ExtraHop,llmnr_poisoning,False,{}
+272,Windows Account Enumeration,"['T1069', 'T1087']",ExtraHop,local_admin_enumeration,False,{}
+273,Memcache Errors,[],ExtraHop,memcache_errors,False,{}
+274,Memcache Issues,[],ExtraHop,memcache_issues,False,{}
+275,Meterpreter C&C Session,"['T1572', 'T1071.001']",ExtraHop,meterpreter_shell,False,{}
+276,Microsoft Exchange Server SSRF and RCE Exploit,"['T1210', 'T1190', 'T1068', 'T1078.002', 'T1505.003']",ExtraHop,ms_exchange_ssrf_rce,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+277,Metasploit C&C SSL/TLS Connection,"['T1572', 'T1071.001']",ExtraHop,msf_cert,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+278,Unusual Remote Admin Connection Requests,[],ExtraHop,msrpc_admin_access_check,False,{}
+279,Alias Member Enumeration,"['T1069', 'T1087']",ExtraHop,msrpc_alias_member_enum,False,{}
+280,Domain Controller Enumeration,['T1018'],ExtraHop,msrpc_domain_controller_enumeration,False,{}
+281,Group Member Enumeration,['T1069'],ExtraHop,msrpc_group_member_enum,False,{}
+282,Logged-On User Enumeration,['T1033'],ExtraHop,msrpc_loggedon_user_enum,False,{}
+283,User Session Enumeration,['T1087'],ExtraHop,msrpc_netsession_enum,False,{}
+284,Network Share Enumeration,['T1135'],ExtraHop,msrpc_network_share_enum,False,{}
+285,RDP Session Enumeration,"['T1021.001', 'T1049', 'T1018']",ExtraHop,msrpc_rdp_session_enum,False,{}
+286,Windows Registry Enumeration,"['T1012', 'T1112']",ExtraHop,msrpc_registry_enumeration_via_winreg,False,{}
+287,Scheduled Task Activity (ITaskSchedulerService),['T1053'],ExtraHop,msrpc_scheduled_task_via_ITaskSchedulerService,False,{}
+288,Scheduled Task Activity (ATSVC),['T1053'],ExtraHop,msrpc_scheduled_task_via_atsvc,False,{}
+289,Multiple Email Errors,['T1566'],ExtraHop,multiple_email_errors,False,{}
+290,Multiple FTP Errors,[],ExtraHop,multiple_ftp_errors,False,{}
+291,Multiple Kerberos Authentication Errors,['T1110'],ExtraHop,multiple_kerberos_auth_errors,False,{}
+292,Multiple LDAP Auth Errors,['T1110'],ExtraHop,multiple_ldap_auth_errors,False,{}
+293,Multiple SMB/CIFS Errors,[],ExtraHop,multiple_smb_cifs_errors,False,{}
+294,NBT-NS Poisoning,['T1557.001'],ExtraHop,nbt_ns_poisoning,False,{}
+295,Network Privilege Escalation,['T1021'],ExtraHop,network_privilege_escalation,False,{}
+296,New Active Directory Web Service (ADWS) Activity,['T1021'],ExtraHop,new_adws_activity,False,{}
+297,New DHCP Activity,['T1557'],ExtraHop,new_dhcp_activity,False,{}
+298,New DNS over HTTPS (DoH) Activity,['T1573'],ExtraHop,new_doh_activity,False,{}
+299,New External Connection,[],ExtraHop,new_external_connection,False,{}
+300,New External Database Connection,[],ExtraHop,new_external_db_connection,False,{}
+301,New External IIOP Connection,[],ExtraHop,new_external_iiop_connection,False,{}
+302,New External LDAP Connection,"['T1071', 'T1040', 'T1041', 'T1048']",ExtraHop,new_external_ldap_connection,False,{}
+303,New External NFS Connection,['T1201'],ExtraHop,new_external_nfs_connection,False,{}
+304,New External RDP Connection,['T1219'],ExtraHop,new_external_rdp_connection,False,{}
+305,New External Java RMI Connection,[],ExtraHop,new_external_rmi_connection,False,{}
+306,New External SMB/CIFS Connection,"['T1021', 'T1187']",ExtraHop,new_external_smb_connection,False,{}
+307,New External SSH Connection,['T1219'],ExtraHop,new_external_ssh_connection,False,{}
+308,New External Telnet Connection,[],ExtraHop,new_external_telnet_connection,False,{}
+309,New External VNC Connection,[],ExtraHop,new_external_vnc_connection,False,{}
+310,New External IoT Connection,['T1041'],ExtraHop,new_iot_connection,False,{}
+311,New Local DNS Server Activity,[],ExtraHop,new_local_dns_server,False,{}
+312,New SMB/CIFS Executable File Transfer,"['T1080', 'T1570']",ExtraHop,new_smb_cifs_file_transfer,False,"{'file_paths': {'is_optional': True, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+313,New Telnet Activity,[],ExtraHop,new_telnet_activity,False,{}
+314,New WSMan Remote Administration Activity,"['T1059', 'T1569']",ExtraHop,new_wsman_remote_administration_activity,False,{}
+315,NFS File Access Failure,[],ExtraHop,nfs_file_access_failure,False,{}
+316,NTLM Relay Attack,['T1557'],ExtraHop,ntlm_relay,False,"{'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'l7_protocols': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+317,NTLMv1 Authentication,['T1557'],ExtraHop,ntlmv1_authentication,False,{}
+318,NTLMv1 Authentication,['T1557'],ExtraHop,ntlmv1_authentication_individual,False,{}
+319,NTLMv2 Authentication,[],ExtraHop,ntlmv2_authentication_individual,False,{}
+320,Numerous Emails,[],ExtraHop,numerous_emails,False,{}
+321,Confirmed OnePercent Group Ransomware IOC,"['T1041', 'T1486', 'T1071', 'T1573']",ExtraHop,onepercent_ml,False,{}
+322,Outbound Connection to a Cobalt Strike IP Address,['T1071.001'],ExtraHop,outbound_cobalt_strike_connection,False,{}
+323,New Outbound SOCKS Connection,['T1090.002'],ExtraHop,outbound_socks_connection,False,{}
+324,Outbound Connection to a Tor Node,['T1090'],ExtraHop,outbound_tor_connection,False,{}
+325,Overwhelmed Citrix Data Transfer,['T1499'],ExtraHop,overwhelmed_citrix_data_transfer,False,{}
+326,Overwhelmed Data Transfer,['T1499'],ExtraHop,overwhelmed_data_transfer,False,{}
+327,Overwhelmed Database Data Transfer,['T1499'],ExtraHop,overwhelmed_database_data_transfer,False,{}
+328,Overwhelmed Email Data Transfer,['T1499'],ExtraHop,overwhelmed_email_data_transfer,False,{}
+329,Overwhelmed FTP Data Transfer,['T1499'],ExtraHop,overwhelmed_ftp_data_transfer,False,{}
+330,Overwhelmed HTTP Data Transfer,['T1499'],ExtraHop,overwhelmed_http_data_transfer,False,{}
+331,Overwhelmed Kerberos Data Transfer,['T1499'],ExtraHop,overwhelmed_kerberos_data_transfer,False,{}
+332,Overwhelmed LDAP Data Transfer,['T1499'],ExtraHop,overwhelmed_ldap_data_transfer,False,{}
+333,Overwhelmed Memcache Data Transfer,['T1499'],ExtraHop,overwhelmed_memcache_data_transfer,False,{}
+334,Overwhelmed Redis Data Transfer,['T1499'],ExtraHop,overwhelmed_redis_data_transfer,False,{}
+335,Ping Scan,['T1018'],ExtraHop,ping_scan,False,{}
+336,Poor AAA Performance,[],ExtraHop,poor_aaa_performance,False,{}
+337,Poor DHCP Performance,[],ExtraHop,poor_dhcp_performance,False,{}
+338,Poor HTTP Performance,[],ExtraHop,poor_http_performance,False,{}
+339,PoshC2 HTTP Connection,"['T1071', 'T1071.001']",ExtraHop,poshc2_http,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+340,PoshC2 SSL/TLS Connection,"['T1071', 'T1071.001']",ExtraHop,poshc2_tls,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+341,HTTP Tunnel,['T1001'],ExtraHop,potential_covert_channel,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'tunnel_target': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}, 'tunnel_protocol': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+342,Remote Service Launch,"['T1210', 'T1569.002']",ExtraHop,psexec_activity,False,"{'commands': {'is_optional': True, 'status': 'active', 'is_tunable': True, 'data_type': 'stringArray'}, 'service_names': {'is_optional': True, 'status': 'active', 'is_tunable': True, 'data_type': 'stringArray'}}"
+343,Ransomware Activity,['T1486'],ExtraHop,ransomware_activity,False,{}
+344,Rare Database Table Access,['T1213'],ExtraHop,rare_database_table_access,False,{}
+345,Rare SSH Port,"['T1021', 'T1571']",ExtraHop,rare_ssh_port,False,"{'ports': {'is_optional': True, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+346,Rclone File Upload to MEGA,['T1567.002'],ExtraHop,rclone_upload_mega,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+347,RDP Brute Force,['T1110'],ExtraHop,rdp_brute_force,False,{}
+348,Inbound Remote Desktop Traffic from an Unusual Location,[],ExtraHop,rdp_unusual_location,False,{}
+349,Redis Errors,[],ExtraHop,redis_errors,False,{}
+350,Redis Issues,[],ExtraHop,redis_issues,False,{}
+351,Redline Stealer HTTP Activity,"['T1041', 'T1071.001']",ExtraHop,redline_stealer_http,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+352,Redline Stealer TCP Activity,"['T1041', 'T1095']",ExtraHop,redline_stealer_tcp,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+353,Remote Registry Modification,"['T1112', 'T1037.001', 'T1543.003', 'T1546.001', 'T1546.015', 'T1547.001', 'T1562.001', 'T1562.004']",ExtraHop,remote_reg_setvalue,False,{}
+354,Past Connection to a New Suspicious Domain,"['T1566.002', 'T1189', 'T1573', 'T1041']",ExtraHop,retrospective_ti_domain_connection,False,{}
+355,Past Connection to a New Suspicious IP Address,"['T1566.002', 'T1189', 'T1573', 'T1041']",ExtraHop,retrospective_ti_ip_address_connection,False,{}
+356,Reverse SSH Connection,[],ExtraHop,reverse_ssh_connection,False,{}
+357,VNC Brute Force,['T1110'],ExtraHop,rfb_brute_force,False,{}
+358,CVE-2020-11901 Ripple20 Exploit Attempt,"['T1203', 'T1210']",ExtraHop,ripple20_dns_rce,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+359,Ripple20 ICMP Scan,"['T1018', 'T1046']",ExtraHop,ripple20_icmp_scan,False,{}
+360,Treck TCP/IP Network Stack Detected,"['T1018', 'T1046']",ExtraHop,ripple20_icmp_treck,False,{}
+361,Ripple20 IP in IP Exploit Attempt,['T1574'],ExtraHop,ripple20_ip_in_ip,False,{}
+362,Ripple20 IP in IP Exploit Attempt,['T1574'],ExtraHop,ripple20_ip_in_ip_ipaddr,False,{}
+363,Remote Log Deletion,['T1070.001'],ExtraHop,rpc_log_deletion_srv,False,{}
+364,Remote System Shutdown,['T1529'],ExtraHop,rpc_remote_shutdown,False,{}
+365,Domain Admin Enumeration,['T1087.002'],ExtraHop,samr_domain_admin_enum,False,{}
+366,Domain Workstation Enumeration,['T1018'],ExtraHop,samr_domain_computer_enum,False,{}
+367,Domain Group Enumeration,['T1069.002'],ExtraHop,samr_domain_group_enum,False,{}
+368,Domain User Enumeration,['T1087.002'],ExtraHop,samr_domain_user_enum,False,{}
+369,Domain Workstation Enumeration,['T1018'],ExtraHop,samr_domain_workstation_enum,False,{}
+370,Local Admin Enumeration,['T1069.001'],ExtraHop,samr_local_admin_enum,False,{}
+371,Local User Enumeration,['T1087.001'],ExtraHop,samr_local_user_enum,False,{}
+372,Scheduled Task Enumeration,"['T1053', 'T1082']",ExtraHop,scheduled_task_enumeration,False,{}
+373,Self-signed SSL/TLS Server Certificate,[],ExtraHop,self_signed_cert_individual,False,"{'certificate': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}}"
+374,Unusual Sensitive Data Transfer,"['T1020', 'T1029', 'T1030', 'T1041', 'T1048', 'T1567']",ExtraHop,sensitive_data_transfer,False,{}
+375,Shellshock DHCP Exploit Attempt,['T1190'],ExtraHop,shellshock_dhcp,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'exploit_option_code_and_value': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+376,Shellshock HTTP Exploit Attempt,['T1190'],ExtraHop,shellshock_http,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'exploit_header_and_value': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+377,SIP Brute Force,['T1110'],ExtraHop,sip_brute_force,False,{}
+378,Sliver C&C Connection,"['T1071', 'T1573', 'T1566', 'T1204']",ExtraHop,sliver_c2_http,False,{}
+379,File Transfer to Windows Autostart Path,"['T1021', 'T1547', 'T1570', 'T1021.002', 'T1547.001']",ExtraHop,smb_autostart_path,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+380,SMB/CIFS Access Denied Errors,['T1039'],ExtraHop,smb_cifs_access_denied_errors,False,{}
+381,SMB/CIFS Brute Force,['T1110'],ExtraHop,smb_cifs_brute_force,False,{}
+382,SMB/CIFS Errors,[],ExtraHop,smb_cifs_errors,False,{}
+383,SMB/CIFS File Access Failure,[],ExtraHop,smb_cifs_file_access_failure,False,{}
+384,SMB/CIFS Privileged Pipe,['T1559'],ExtraHop,smb_cifs_privileged_pipe,False,{}
+385,SMB/CIFS Share Enumeration,['T1135'],ExtraHop,smb_cifs_share_enumeration,False,{}
+386,SMB/CIFS Account Errors,['T1039'],ExtraHop,smb_cifs_valid_login_errors,False,{}
+387,SMB/CIFS Named Pipe Beaconing,['T1071'],ExtraHop,smb_named_pipe_beaconing,False,{}
+388,SMBv1 Connection,[],ExtraHop,smbv1_connection_individual,False,{}
+389,Unusual Email Domain Length,[],ExtraHop,smtp_helo_ehlo_buffer_overflow,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+390,Poor SMTP Server Performance,[],ExtraHop,smtp_processing_spike,False,{}
+391,SMTP Syntax Error,[],ExtraHop,smtp_syntax_error,False,{}
+392,SNMP Reconnaissance Activity,['T1602.001'],ExtraHop,snmp_recon_activity,False,{}
+393,Spike in Email Traffic Volume,['T1566'],ExtraHop,spike_in_email_traffic_volume,False,{}
+394,Spike in LDAP Requests,['T1087'],ExtraHop,spike_in_ldap_requests,False,{}
+395,Spike in RDP Sessions,"['T1210', 'T1021.001']",ExtraHop,spike_in_rdp_sessions,False,{}
+396,Spike in VNC Sessions,['T1210'],ExtraHop,spike_in_rfb_sessions,False,{}
+397,Transaction Delays,[],ExtraHop,spike_in_round_trip_time,False,{}
+398,Spike in SSH Sessions,['T1110'],ExtraHop,spike_in_ssh_sessions,False,{}
+399,Spike in Telnet Connections,['T1021'],ExtraHop,spike_in_telnet_connections,False,{}
+400,Spoofed SSL/TLS Certificate,['T1071.001'],ExtraHop,spoofed_self_signed_ssl_certificate,False,{}
+401,CVE-2022-22965 Spring4Shell Exploit Attempt,['T1190'],ExtraHop,spring4shell,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'malicious_file': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+402,SQL Injection (SQLi) Attack,['T1190'],ExtraHop,sqli_attack,False,"{'uris': {'is_optional': True, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+403,SSH Brute Force,"['T1110.001', 'T1110.003']",ExtraHop,ssh_brute_force,False,{}
+404,SSH Brute Force with Successful Login,"['T1110.001', 'T1110.003']",ExtraHop,ssh_brute_force_success_login,False,{}
+405,Inbound SSH Traffic from an Unusual Location,[],ExtraHop,ssh_unusual_location,False,{}
+406,Outbound SSH Traffic to an Unusual Location,['T1021.004'],ExtraHop,ssh_unusual_location_c2,False,{}
+407,SSL Scan,[],ExtraHop,ssl_scan,False,{}
+408,Stalled Data Transfer,['T1498'],ExtraHop,stalled_data_transfer,False,{}
+409,Sudden Decrease in Application Bandwidth,[],ExtraHop,sudden_decrease_in_application_bandwidth,False,{}
+410,Sudden Decrease in Device Bandwidth,[],ExtraHop,sudden_decrease_in_device_bandwidth,False,{}
+411,Sudden Decrease in Network Bandwidth,[],ExtraHop,sudden_decrease_in_network_bandwidth,False,{}
+412,SUNBURST C&C Activity,"['T1104', 'T1008', 'T1573', 'T1001', 'T1132', 'T1071.001', 'T1568.002']",ExtraHop,sunburst,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+413,SUPERNOVA Web Shell,"['T1505.003', 'T1027.004', 'T1071.001', 'T1105', 'T1041']",ExtraHop,supernova_web_shell_command,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+414,Suspicious SMB/CIFS Resource Accessed,[],ExtraHop,suspicious_cifs,False,{}
+415,Suspicious Dynamic DNS (DDNS) Activity,[],ExtraHop,suspicious_dynamic_dns_activity,False,{}
+416,Suspicious External File Download,[],ExtraHop,suspicious_file_download_external,False,{}
+417,Suspicious Internal File Download,[],ExtraHop,suspicious_file_download_internal,False,{}
+418,FTP Data Staging,"['T1039', 'T1114', 'T1114.002']",ExtraHop,suspicious_ftp_data_reads,False,"{'file_paths': {'is_optional': True, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+419,Suspicious FTP Download,['T1105'],ExtraHop,suspicious_ftp_download,False,"{'path': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+420,Unusual HTML Application (HTA) File Download,"['T1218', 'T1218.005', 'T1204.002']",ExtraHop,suspicious_hta_download,False,{}
+421,Suspicious HTTP File Received,['T1189'],ExtraHop,suspicious_http_file,False,{}
+422,Non-standard HTTP Port,['T1571'],ExtraHop,suspicious_http_port,False,{}
+423,Suspicious JA3 Fingerprint,[],ExtraHop,suspicious_ja3_fingerprint,False,{}
+424,Suspicious New Device Detected,[],ExtraHop,suspicious_new_device,False,{}
+425,NFS Data Staging,"['T1039', 'T1114', 'T1114.002']",ExtraHop,suspicious_nfs_data_reads,False,"{'file_paths': {'is_optional': True, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+426,Suspicious NFS File Reads,['T1074.002'],ExtraHop,suspicious_nfs_file_reads,False,{}
+427,Suspicious NFS File Share Access,"['T1074', 'T1074.002']",ExtraHop,suspicious_nfs_file_share_access,False,{}
+428,RDP Attack Tool Activity,['T1110'],ExtraHop,suspicious_rdp_client,False,"{'rdp_tool': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+429,SMB/CIFS Data Staging,"['T1039', 'T1114', 'T1114.002']",ExtraHop,suspicious_smb_cifs_data_reads,False,"{'file_paths': {'is_optional': True, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}}"
+430,Suspicious SMB/CIFS File Reads,['T1039'],ExtraHop,suspicious_smb_cifs_file_reads,False,{}
+431,Suspicious SMB/CIFS File Share Access,"['T1486', 'T1485']",ExtraHop,suspicious_smb_cifs_file_share_access,False,{}
+432,Unusual SMB/CIFS Executable File Transfer,"['T1080', 'T1570']",ExtraHop,suspicious_smb_cifs_file_transfer,False,"{'file_paths': {'is_optional': True, 'status': 'active', 'is_tunable': True, 'data_type': 'stringArray'}}"
+433,Suspicious SMB/CIFS Named Pipe,['T1071.002'],ExtraHop,suspicious_smb_named_pipe,False,"{'named_pipe': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+434,Suspicious SSL/TLS Certificates,"['T1041', 'T1071.001']",ExtraHop,suspicious_ssl_cert,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+435,Suspicious Top-level Domain,[],ExtraHop,suspicious_tld,False,"{'tld': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+436,Suspicious User Agent,[],ExtraHop,suspicious_user_agent,False,"{'software': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+437,"TCP NULL, FIN, or XMAS Scan",['T1046'],ExtraHop,tcp_null_fin_or_xmas_scan,False,{}
+438,TCP SYN Scan,['T1046'],ExtraHop,tcp_syn_scan,False,"{'ports': {'is_optional': True, 'status': 'active', 'is_tunable': True, 'data_type': 'stringArray'}}"
+439,TCP Stack Exploit Attempt (Client),[],ExtraHop,tcp_urg_flag_client,False,{}
+440,TCP Stack Exploit Attempt (Server),[],ExtraHop,tcp_urg_flag_server,False,{}
+441,Telnet Password,"['T1021', 'T1110']",ExtraHop,telnet_password,False,{}
+442,DNS Request to a Suspicious Host,"['T1189', 'T1566.002']",ExtraHop,ti_dns_host,False,"{'query': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}}"
+443,HTTP Request to a Suspicious Host,"['T1189', 'T1566.002', 'T1573', 'T1041']",ExtraHop,ti_http_host,False,"{'host': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}}"
+444,HTTP Request to a Suspicious URI,"['T1189', 'T1566.002']",ExtraHop,ti_http_uri,False,"{'uri': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}}"
+445,SSL/TLS Connection to a Suspicious Host,"['T1189', 'T1573', 'T1041', 'T1566.002']",ExtraHop,ti_ssl_sni,False,"{'sni': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}}"
+446,Inbound Suspicious Connections,[],ExtraHop,ti_tcp_incoming,False,"{'suspicious_ipaddr': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'ipaddrArray'}}"
+447,Inbound Connection from a Suspicious IP Address,[],ExtraHop,ti_tcp_incoming_individual,False,{}
+448,Outbound Connection to a Suspicious IP Address,"['T1189', 'T1566.002', 'T1573', 'T1041']",ExtraHop,ti_tcp_outgoing,False,{}
+449,TLS 1.3 Early Data Connection,[],ExtraHop,tls13_early_data_individual,False,{}
+450,Apache Tomcat JSP Exploit Attempt,['T1210'],ExtraHop,tomcat_jsp_upload,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+451,UDP Port Scan,['T1046'],ExtraHop,udp_port_scan,False,{}
+452,Unapproved Cloud Service Access,[],ExtraHop,unapproved_saas,False,{}
+453,Unauthorized Caller Error,[],ExtraHop,unauthorized_caller_error,False,{}
+454,Unconventional Data Transfer,['T1074'],ExtraHop,unconventional_data_transfer,False,{}
+455,Unconventional External Connection,"['T1612', 'T1071', 'T1041']",ExtraHop,unconventional_new_external_host,False,{}
+456,Unconventional Internal Connection,"['T1599', 'T1046', 'T1210', 'T1083']",ExtraHop,unconventional_new_internal_host,False,{}
+457,Unconventional Protocol Communication,['T1021'],ExtraHop,unconventional_new_protocol,False,{}
+458,Unconventional RDP Behavior,['T1021.001'],ExtraHop,unconventional_rdp_behavior,False,{}
+459,Unconventional RDP Data Transfer,['T1074'],ExtraHop,unconventional_rdp_data_transfer,False,{}
+460,Unconventional VNC Behavior,['T1219'],ExtraHop,unconventional_rfb_behavior,False,{}
+461,Unconventional VNC Data Transfer,['T1074'],ExtraHop,unconventional_rfb_data_transfer,False,{}
+462,Unconventional SMB/CIFS Data Transfer,"['T1039', 'T1074']",ExtraHop,unconventional_smb_cifs_data_transfer,False,{}
+463,Unconventional SSH Behavior,['T1110'],ExtraHop,unconventional_ssh_behavior,False,{}
+464,Unconventional SSH Data Transfer,['T1074'],ExtraHop,unconventional_ssh_data_transfer,False,{}
+465,Unconventional Telnet Data Transfer,['T1074'],ExtraHop,unconventional_telnet_data_transfer,False,{}
+466,Unencrypted LDAP Connection,[],ExtraHop,unencrypted_ldap_individual,False,{}
+467,Unencrypted Zoom Data,['T1040'],ExtraHop,unencrypted_zoom,False,{}
+468,Unencrypted Zoom Data,['T1040'],ExtraHop,unencrypted_zoom_individual,False,{}
+469,Unexpected Dropped Connections,[],ExtraHop,unexpected_dropped_connections,False,{}
+470,Unexpected Service Access,[],ExtraHop,unexpected_service_access,False,{}
+471,Unknown Public DNS Server,[],ExtraHop,unknown_public_dns_server,False,{}
+472,Request to Unknown Public DNS Server,[],ExtraHop,unknown_public_dns_server_individual,False,"{'server_ipaddr': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'ipaddrArray'}}"
+473,Data Exfiltration to Unknown S3 Bucket,"['T1537', 'T1567.002']",ExtraHop,unknown_s3_bucket_upload,False,{}
+474,Unsafe LDAP Authentication,"['T1040', 'T1078']",ExtraHop,unsafe_ldap_auth,False,"{'bind_dn': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'stringArray'}, 'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+475,Unsafe LDAP Authentication,"['T1040', 'T1078']",ExtraHop,unsafe_ldap_auth_individual,False,{}
+476,Unusual IoT Protocol Activity,['T1071'],ExtraHop,unusual_iot_protocol,False,{}
+477,Unusual Kerberos Fingerprint,['T1558'],ExtraHop,unusual_kerberos_fingerprint,False,{}
+478,Unusual LDAP Query Activity,"['T1087', 'T1482', 'T1615', 'T1069', 'T1018']",ExtraHop,unusual_ldap_query_activity,False,{}
+479,Unusual Protocol for Enterprise Software,"['T1071', 'T1095']",ExtraHop,unusual_protocol_for_enterprise_software,False,{}
+480,Unusual Download from S3 Bucket,"['T1530', 'T1074.002']",ExtraHop,unusual_s3_download,False,{}
+481,Unusual Login Time,['T1078'],ExtraHop,unusual_user_login_time,False,{}
+482,Inbound VNC Traffic from an Unusual Location,[],ExtraHop,vnc_unusual_location,False,{}
+483,VoIP Call Failure,[],ExtraHop,voip_call_failure,False,{}
+484,VoIP Unavailability Error,[],ExtraHop,voip_unavailability_error,False,{}
+485,VPN Gateway Access from an Unusual Location,['T1133'],ExtraHop,vpn_gateway_unusual_location,False,{}
+486,Weak Cipher Suites,[],ExtraHop,weak_cipher,False,{}
+487,Weak Cipher Suite,[],ExtraHop,weak_cipher_individual,False,"{'cipher_suite': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}}"
+488,Weak Kerberos Encryption,['T1558.003'],ExtraHop,weak_kerberos_encryption_attempt,False,{}
+489,Request for Weak Kerberos Encryption,[],ExtraHop,weak_kerberos_encryption_client_individual,False,{}
+490,Web Directory Scan,"['T1083', 'T1518']",ExtraHop,web_directory_scan,False,{}
+491,Web Issues,[],ExtraHop,web_issues,False,{}
+492,Web Service Issues,[],ExtraHop,web_service_issues,False,{}
+493,Oracle WebLogic Administration Console Exploit Attempt,['T1190'],ExtraHop,weblogic_admin_console_handle_rce,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+494,Oracle WebLogic Deserialization Exploit Attempt,"['T1190', 'T1210']",ExtraHop,weblogic_xml_deserialization,False,"{'client_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}, 'server_port': {'is_optional': False, 'status': 'active', 'is_tunable': False, 'data_type': 'int'}}"
+495,WiFi Auth Issues,[],ExtraHop,wifi_auth_issues,False,{}
+496,Wildcard SSL/TLS Server Certificates,[],ExtraHop,wildcard_cert_individual,False,"{'certificate': {'is_optional': False, 'status': 'active', 'is_tunable': True, 'data_type': 'string'}}"
+497,New Windows Registry Modification Activity,"['T1112', 'T1037.001', 'T1543.003', 'T1546.001', 'T1546.015', 'T1547.001', 'T1562.001', 'T1562.004']",ExtraHop,winreg_modification_activity,False,{}
+498,New WMI Method Launch,"['T1021.006', 'T1047', 'T1210']",ExtraHop,wmi_activity,False,{}
+499,New WMI Process Creation,"['T1021.006', 'T1047', 'T1210']",ExtraHop,wmi_create_process,False,{}
+500,New WMI Enumeration Query,"['T1082', 'T1047']",ExtraHop,wmi_enumeration_query,False,{}
+501,WordPress Brute Force,['T1110'],ExtraHop,wordpress_brute_force,False,{}
+502,PowerShell Remoting Activity,['T1021.006'],ExtraHop,wsman_activity,False,{}
+503,Cross-Site Scripting (XSS) Attack,['T1203'],ExtraHop,xss_attack,False,{}

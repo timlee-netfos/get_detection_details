@@ -1,0 +1,8 @@
+# configuration
+.env
+__pycache__
+
+# records
+c2_detections_record
+c2_ip_record
+test.py 
