@@ -15,9 +15,9 @@ class ExtrahopApi:
     
     def load_customer(self):
         self.customer = input("請輸入客戶名稱: ")
+        with open("customers.txt", "r") as fr:
+            customers = fr.read().strip("\n")
         while True:
-            with open("customers.txt", "r") as fr:
-                customers = fr.read().strip("\n")
             if self.customer not in customers:
                 self.customer = input("客戶名稱錯誤，請重新輸入: ")
             else: 
