@@ -64,7 +64,7 @@ class detection_details(ExtrahopApi):
             }],
             "until": int(datetime.timestamp(datetime.strptime(self.end_time, "%Y%m%d"))+86399)*1000,
         }
-        c2_detections = self.post_info(self, "detections/search", payload).json()
+        c2_detections = self.post_info("detections/search", payload).json()
 
         with open(f"c2_detections_record/{self.start_time}~{self.end_time}.json", "w") as fw:
             json.dump(c2_detections, fw)
