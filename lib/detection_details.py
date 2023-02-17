@@ -4,9 +4,7 @@ import json
 from dotenv import load_dotenv
 import os
 import pandas as pd
-from lib import virustotal_api
 from lib.extrahop_api import ExtrahopApi
-import ipaddress
 from datetime import datetime
 import re 
 
