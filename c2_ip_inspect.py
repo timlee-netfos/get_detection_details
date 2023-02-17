@@ -16,6 +16,7 @@ from datetime import datetime
 
 ############## global variable start ##############
 detection_type = "c2_web_beaconing"
+json_directory = "c2_directions_record"
 pd.set_option('display.max_rows', None)
 ############## global variable end   ##############
 
@@ -30,13 +31,20 @@ else:
     os.mkdir("c2_ip_record")
 ############## initial end   ##############
 
+# create api application
 API = detection_details()
+
+# get essential variables
 API.get_token()
 API.get_start_time()
 API.get_end_time()
+
+# use GET method to get c2-web-beaconing detections data from extrahop cloud
 API.detection_details(detection_type)
 
-with open(f"c2_detections_record/{API.start_time}~{API.end_time}.json", "r") as fr:
+
+# filter out private ip, then check if other ip malicious and make a report
+with open(f"{json_directory}/{API.start_time}~{API.end_time}.json", "r") as fr:
     c2_detections = json.load(fr)
 
 offender = []
@@ -55,6 +63,7 @@ for ip in offender:
         vt_dfs.append(vt_df)
 ip_df = pd.concat(vt_dfs)
 
+# save and print the report
 ip_df = ip_df.set_index('ip')
 ip_df.to_csv(f"c2_ip_record/{API.start_time}~{API.end_time}.csv")
 print(ip_df)

@@ -44,7 +44,7 @@ class detection_details(ExtrahopApi):
         return self.end_time
             
     # get detection details in a time range
-    def detection_details(self, detection_type):
+    def detection_details(self, detection_type, directory):
         print("working on ---> requests.post")
         payload = {
             "filter": {
@@ -66,5 +66,5 @@ class detection_details(ExtrahopApi):
         }
         detections = self.post_info("detections/search", payload).json()
 
-        with open(f"c2_detections_record/{self.start_time}~{self.end_time}.json", "w") as fw:
+        with open(f"{directory}/{self.start_time}~{self.end_time}.json", "w") as fw:
             json.dump(detections, fw)
