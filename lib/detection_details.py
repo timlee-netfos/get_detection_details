@@ -50,7 +50,7 @@ class detection_details(ExtrahopApi):
                 "ticket_id": [".none"],
                 "status": [".none"],
                 "resolution": [".none"],
-                "types": [detection_type],
+                "types": detection_type,
                 "risk_score_min": 0
             },
             "from": int(datetime.timestamp(datetime.strptime(self.start_time, "%Y%m%d")))*1000,

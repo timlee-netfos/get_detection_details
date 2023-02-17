@@ -15,7 +15,7 @@ import ipaddress
 from datetime import datetime
 
 ############## global variable start ##############
-detection_type = "c2_web_beaconing"
+detection_type = ["c2_web_beaconing"]
 detection_directory = "c2_detections_record"
 pd.set_option('display.max_rows', None)
 ############## global variable end   ##############
