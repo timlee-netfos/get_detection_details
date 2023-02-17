@@ -16,15 +16,15 @@ from datetime import datetime
 
 ############## global variable start ##############
 detection_type = "c2_web_beaconing"
-json_directory = "c2_directions_record"
+json_directory = "c2_detections_record"
 pd.set_option('display.max_rows', None)
 ############## global variable end   ##############
 
 ############## initial start ##############
-if os.path.isdir("c2_detections_record"):
+if os.path.isdir(json_directory):
     pass 
 else:
-    os.mkdir("c2_detections_record")
+    os.mkdir(json_directory)
 if os.path.isdir("c2_ip_record"):
     pass 
 else:
@@ -40,7 +40,7 @@ API.get_start_time()
 API.get_end_time()
 
 # use GET method to get c2-web-beaconing detections data from extrahop cloud
-API.detection_details(detection_type)
+API.detection_details(detection_type, json_directory)
 
 
 # filter out private ip, then check if other ip malicious and make a report
