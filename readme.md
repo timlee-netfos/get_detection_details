@@ -1,12 +1,12 @@
 # Modules Installation
-
-- installl modules
+- install modules
 ```powershell
 $ pip install -r requirements.txt
 ```
+- Python version: 3.9 or above
 
 # .env Configuration
-- generate a new ".env" file in "lib" directory
+- create a new ".env" file in "lib" directory
 - configuration
 	- vt_API_KEY:
 		- sign up virustotal and get api key
