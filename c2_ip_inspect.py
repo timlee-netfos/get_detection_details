@@ -16,19 +16,16 @@ from datetime import datetime
 
 ############## global variable start ##############
 detection_type = ["c2_web_beaconing"]
-detection_directory = "c2_detections_record"
+detection_directory = ["c2_detections_record", "c2_ip_record"]
 pd.set_option('display.max_rows', None)
 ############## global variable end   ##############
 
 ############## initial start ##############
-if os.path.isdir(detection_directory):
-    pass 
-else:
-    os.mkdir(detection_directory)
-if os.path.isdir("c2_ip_record"):
-    pass 
-else:
-    os.mkdir("c2_ip_record")
+for d in detection_directory:
+    if os.path.isdir(d):
+        pass 
+    else:
+        os.mkdir(d)
 ############## initial end   ##############
 
 # create api application
@@ -40,17 +37,17 @@ API.get_start_time()
 API.get_end_time()
 
 # use GET method to get c2-web-beaconing detections data from extrahop cloud
-API.detection_details(detection_type, detection_directory)
+API.detection_details(detection_type, detection_directory[0])
 
 
 # filter out private ip, then check if other ip malicious and make a report
-with open(f"{detection_directory}/{API.start_time}~{API.end_time}.json", "r") as fr:
+with open(f"{detection_directory[0]}/{API.start_time}~{API.end_time}.json", "r") as fr:
     c2_detections = json.load(fr)
 
 offender = []
 ip_df = pd.DataFrame()
 
-for d in c2_detections:   
+for d in c2_detections:
     for p in d["participants"]:
         if p["role"] == "offender":
             offender.append(p["object_value"])
@@ -65,7 +62,7 @@ ip_df = pd.concat(vt_dfs)
 
 # save and print the report
 ip_df = ip_df.set_index('ip')
-ip_df.to_csv(f"c2_ip_record/{API.start_time}~{API.end_time}.csv")
+ip_df.to_csv(f"{detection_directory[1]}/{API.start_time}~{API.end_time}.csv")
 print(ip_df)
 
 

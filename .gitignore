@@ -1,5 +1,6 @@
 # configuration
 .env
+customers.txt
 
 # side file for executing program
 __pycache__

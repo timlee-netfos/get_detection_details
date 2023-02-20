@@ -7,30 +7,85 @@ import base64
 from dotenv import load_dotenv
 import os
 
+
 class ExtrahopApi:
     def __init__(self):
-        self.load_customer()
-        self.load_config()
+        # load confidential information from lib/.env
+        load_dotenv()
+        self.check_env()
         self.token = None
     
+    def check_env(self):
+        if not os.path.isfile("lib/.env"):
+            self.vt_API_KEY()
+            self.new_customer()
+        else:
+            self.load_customer()
+            self.load_config()
+
     def load_customer(self):
-        # may have several customers to monitor
-        # and still need to use netfos to test
         self.customer = input("請輸入客戶名稱: ")
-        with open("customers.txt", "r") as fr:
+        with open("data/customers.txt", "r") as fr:
             customers = fr.read().strip("\n")
         while True:
             if self.customer not in customers:
-                self.customer = input("客戶名稱錯誤，請重新輸入: ")
+                check_wrong_customer = input(f"目前不存在客戶名稱 {self.customer}\n1. 新增客戶 2. 重新輸入: ")
+                if check_wrong_customer == "1":
+                    self.new_customer()
+                    break
+                elif check_wrong_customer == "2":
+                    continue
             else: 
                 break
 
+    def new_customer(self):
+        try_times = 3
+        while try_times > 0:
+            self.customer = input("請輸入客戶名稱: ")
+            self.HOST = input("請輸入 API Endpoint: ")
+            self.ID = input("請輸入 ID: ")
+            self.SECRET = input("請輸入 SECRET: ")
+            r = self.get_info("apikeys").status_code
+            if r >= 200 and r < 300:
+                with open("lib/.env", "a") as fa:
+                    fa.write(f"\n{self.customer}_HOST={self.HOST}\n{self.customer}_ID={self.ID}\n{self.customer}_SECRET={self.SECRET}")
+                with open("data/customers.txt", "a") as fa:
+                    fa.write(f"\n{self.customer}")
+                return None
+            else:
+                print("輸入錯誤，請重新輸入")
+                try_times -= 1
+                continue
+        print("錯誤次數已達 3 次，程式終止")
+        exit(1)
+
+    def vt_API_KEY(self):
+        try_times = 3
+        while try_times > 0:
+            vt_API_KEY = input("請輸入 virustotal API KEY: ")
+            headers = {
+                "Accept": "application/json",
+                "x-apikey": vt_API_KEY
+            }
+            r = requests.get("https://www.virustotal.com/api/v3/ip_addresses/8.8.8.8", headers=headers).status_code
+            if r >= 200 and r < 300:
+                load_dotenv()
+                with open("lib/.env", "a") as fa:
+                    fa.write(f"\nvt_API_KEY={vt_API_KEY}")
+                return None
+            else:
+                print("輸入錯誤，請重新輸入")
+                try_times -= 1
+                continue
+        print("錯誤次數已達 3 次，程式終止")
+        exit(1)
+            
+    
+
     def load_config(self):
-        # load confidential information from .env
-        load_dotenv()
         self.HOST = os.getenv(f"{self.customer}_HOST")
         self.ID = os.getenv(f"{self.customer}_ID")
-        self.SECRET = os.getenv(f"{self.customer}_SECRET")
+        self.SECRET = os.getenv(f"{self.customer}_SECRET")            
     
     def get_token(self):
         # get token to access ExtraHop REST API
