@@ -1,6 +1,9 @@
 # configuration
 .env
+
+# side file for executing program
 __pycache__
+.obsidian
 
 # records
 c2_detections_record

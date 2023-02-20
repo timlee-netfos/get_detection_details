@@ -19,7 +19,15 @@ $ pip install -r requirements.txt
 		- The secret of the REST API credentials
 - find your customer's name and fill it into {customer}
 - if add new customer , please add information to "customers.txt"
-		
+
+# Program Execution
+- execute python program
+```powershell
+$ python \path\to\directory\c2_ip_inspect.py
+```
+- input customer name (input netfos for testing)
+- input time interval
+- print dataframe of virustotal searching results
 
 # Reference
 - virustotal_api.py
