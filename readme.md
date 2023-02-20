@@ -25,9 +25,9 @@ $ pip install -r requirements.txt
 ```powershell
 $ python \path\to\directory\c2_ip_inspect.py
 ```
-- input customer name (input netfos for testing)
-- input time interval
-- print dataframe of virustotal searching results
+- input variables
+	- customer name (input netfos for testing)
+	- time interval
 
 # Reference
 - virustotal_api.py
