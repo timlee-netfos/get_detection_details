@@ -7,8 +7,6 @@ $ pip install -r requirements.txt
 
 # .env Configuration
 - generate a new ".env" file in "lib" directory
-- find your customer's name and fill it into {customer}
-- if add new customer , please add information to "customers.txt"
 - configuration
 	- vt_API_KEY:
 		- sign up virustotal and get api key
@@ -19,6 +17,8 @@ $ pip install -r requirements.txt
 		- The ID of the REST API credentials
 	- {customer}_SECRET: 
 		- The secret of the REST API credentials
+- find your customer's name and fill it into {customer}
+- if add new customer , please add information to "customers.txt"
 		
 
 # Reference
