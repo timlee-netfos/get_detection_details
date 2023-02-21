@@ -7,6 +7,7 @@ import base64
 from dotenv import load_dotenv
 import os
 from termcolor import colored
+from requests.exceptions import MissingSchema
 
 class ExtrahopApi:
     def __init__(self):
@@ -24,42 +25,45 @@ class ExtrahopApi:
             self.load_config()
 
     def load_customer(self):
-        self.customer = input("請輸入客戶名稱: ")
         with open("data/customers.txt", "r") as fr:
             customers = fr.read().strip("\n")
         while True:
+            self.customer = input("請輸入客戶名稱: ")
             if self.customer not in customers:
-                check_wrong_customer = input(f"目前不存在客戶名稱 {self.customer}\n1. 新增客戶 2. 重新輸入: ")
+                check_wrong_customer = input(f"目前不存在客戶名稱 " + colored(f"{self.customer}", "blue") + "\n1. 新增客戶 2. 重新輸入: ")
                 if check_wrong_customer == "1":
                     self.new_customer()
                     break
-                elif check_wrong_customer == "2":
-                    continue
             else: 
                 break
 
     def new_customer(self):
         try_times = 3
         while try_times > 0:
+            print(colored("[新增客戶]", "green"))
             self.customer = input("請輸入客戶名稱: ")
             self.HOST = input("請輸入 API Endpoint: ")
             self.ID = input("請輸入 ID: ")
             self.SECRET = input("請輸入 SECRET: ")
-            r = self.get_info("apikeys").status_code
-            if r >= 200 and r < 300:
-                with open("lib/.env", "a") as fa:
-                    fa.write(f"\n{self.customer}_HOST={self.HOST}\n{self.customer}_ID={self.ID}\n{self.customer}_SECRET={self.SECRET}")
-                with open("data/customers.txt", "a") as fa:
-                    fa.write(f"\n{self.customer}")
-                print(colored("新增客戶成功!", "yellow"))
-                return None
-            elif try_times > 1:
-                print(colored("輸入錯誤，請重新輸入", "red"))
-                try_times -= 1
-                continue
-            else:
-                print(colored("錯誤次數已達 3 次，程式終止", "yellow"))
-                exit(1)
+            try:
+                # self.get_info("apikeys")
+                self.get_token()
+            # except AttributeError:
+            except (ConnectionError, KeyError, MissingSchema):
+                if try_times > 1:
+                    print(colored("輸入錯誤，請重新輸入", "red"))
+                    try_times -= 1
+                    continue
+                else:
+                    print(colored("錯誤次數已達 3 次，程式終止", "yellow"))
+                    exit(1)
+            with open("lib/.env", "a") as fa:
+                fa.write(f"\n{self.customer}_HOST={self.HOST}\n{self.customer}_ID={self.ID}\n{self.customer}_SECRET={self.SECRET}")
+            with open("data/customers.txt", "a") as fa:
+                fa.write(f"\n{self.customer}")
+            print(colored("新增客戶成功!", "yellow"))
+            return None
+            
         
 
     def vt_API_KEY(self):
