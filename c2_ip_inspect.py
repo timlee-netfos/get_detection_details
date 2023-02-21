@@ -13,6 +13,7 @@ from lib.extrahop_api import ExtrahopApi
 from lib.detection_details import detection_details
 import ipaddress
 from datetime import datetime
+from termcolor import colored
 
 ############## global variable start ##############
 detection_type = ["c2_web_beaconing"]

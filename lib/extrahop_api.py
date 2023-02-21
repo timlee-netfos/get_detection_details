@@ -6,7 +6,7 @@ import requests
 import base64
 from dotenv import load_dotenv
 import os
-
+from termcolor import colored
 
 class ExtrahopApi:
     def __init__(self):
@@ -51,13 +51,16 @@ class ExtrahopApi:
                     fa.write(f"\n{self.customer}_HOST={self.HOST}\n{self.customer}_ID={self.ID}\n{self.customer}_SECRET={self.SECRET}")
                 with open("data/customers.txt", "a") as fa:
                     fa.write(f"\n{self.customer}")
+                print(colored("新增客戶成功!", "yellow"))
                 return None
-            else:
-                print("輸入錯誤，請重新輸入")
+            elif try_times > 1:
+                print(colored("輸入錯誤，請重新輸入", "red"))
                 try_times -= 1
                 continue
-        print("錯誤次數已達 3 次，程式終止")
-        exit(1)
+            else:
+                print(colored("錯誤次數已達 3 次，程式終止", "yellow"))
+                exit(1)
+        
 
     def vt_API_KEY(self):
         try_times = 3
@@ -72,12 +75,13 @@ class ExtrahopApi:
                 load_dotenv()
                 with open("lib/.env", "a") as fa:
                     fa.write(f"\nvt_API_KEY={vt_API_KEY}")
+                print(colored("新增 virustotal API KEY 成功!", "yellow"))
                 return None
             else:
-                print("輸入錯誤，請重新輸入")
+                print(colored("輸入錯誤，請重新輸入", "red"))
                 try_times -= 1
                 continue
-        print("錯誤次數已達 3 次，程式終止")
+        print(colored("錯誤次數已達 3 次，程式終止", "yellow"))
         exit(1)
             
     

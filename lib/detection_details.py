@@ -7,6 +7,7 @@ import pandas as pd
 from lib.extrahop_api import ExtrahopApi
 from datetime import datetime
 import re 
+from termcolor import colored
 
 class detection_details(ExtrahopApi):
     def __init__(self):
@@ -22,9 +23,9 @@ class detection_details(ExtrahopApi):
                     datetime.strptime(self.start_time, '%Y%m%d')
                     break
                 except ValueError:
-                    self.start_time = input("日期錯誤，請輸入日期格式 yyyymmdd: ")
+                    self.start_time = input(colored("日期錯誤，請輸入日期格式 yyyymmdd: ", "yellow"))
             else:
-                self.start_time = input("日期錯誤，請輸入日期格式 yyyymmdd: ")
+                self.start_time = input(colored("日期錯誤，請輸入日期格式 yyyymmdd: ", "yellow"))
         return self.start_time
 
     def get_end_time(self):
@@ -36,9 +37,9 @@ class detection_details(ExtrahopApi):
                     datetime.strptime(self.end_time, '%Y%m%d')
                     break
                 except ValueError:
-                    self.end_time = input("日期錯誤，請輸入日期格式 yyyymmdd: ")
+                    self.end_time = input(colored("日期錯誤，請輸入日期格式 yyyymmdd: ", "yellow"))
             else:
-                self.end_time = input("日期錯誤，請輸入日期格式 yyyymmdd: ")
+                self.end_time = input(colored("日期錯誤，請輸入日期格式 yyyymmdd: ", "yellow"))
         return self.end_time
             
     # get detection details in a time range
