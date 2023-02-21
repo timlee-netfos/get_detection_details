@@ -64,6 +64,6 @@ ip_df = pd.concat(vt_dfs)
 # save and print the report
 ip_df = ip_df.set_index('ip')
 ip_df.to_csv(f"{detection_directory[1]}/{API.start_time}~{API.end_time}.csv")
-print(ip_df)
+print(ip_df["security vendors' analysis"])
 
 
