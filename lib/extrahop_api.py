@@ -61,7 +61,7 @@ class ExtrahopApi:
                 fa.write(f"\n{self.customer}_HOST={self.HOST}\n{self.customer}_ID={self.ID}\n{self.customer}_SECRET={self.SECRET}")
             with open("data/customers.txt", "a") as fa:
                 fa.write(f"\n{self.customer}")
-            print(colored("新增客戶成功!", "yellow"))
+            print(colored("新增客戶成功!", "green"))
             return None
             
         
@@ -69,6 +69,7 @@ class ExtrahopApi:
     def vt_API_KEY(self):
         try_times = 3
         while try_times > 0:
+            print(colored("[新增 virustotal API KEY]", "green"))
             vt_API_KEY = input("請輸入 virustotal API KEY: ")
             headers = {
                 "Accept": "application/json",
@@ -79,7 +80,7 @@ class ExtrahopApi:
                 load_dotenv()
                 with open("lib/.env", "a") as fa:
                     fa.write(f"\nvt_API_KEY={vt_API_KEY}")
-                print(colored("新增 virustotal API KEY 成功!", "yellow"))
+                print(colored("新增 virustotal API KEY 成功!", "green"))
                 return None
             else:
                 print(colored("輸入錯誤，請重新輸入", "red"))

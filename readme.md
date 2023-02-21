@@ -1,9 +1,18 @@
 # Modules Installation
+- Python version: 3.9 or above
 - install modules
 ```powershell
 $ pip install -r requirements.txt
 ```
-- Python version: 3.9 or above
+
+# Program Execution
+- execute python program
+```powershell
+$ python \path\to\directory\c2_ip_inspect.py
+```
+- input variables
+	- customer name (input netfos for testing)
+	- time interval
 
 # .env Configuration
 - configuration
@@ -16,15 +25,6 @@ $ pip install -r requirements.txt
 		- The ID of the REST API credentials
 	- {customer}_SECRET: 
 		- The secret of the REST API credentials
-
-# Program Execution
-- execute python program
-```powershell
-$ python \path\to\directory\c2_ip_inspect.py
-```
-- input variables
-	- customer name (input netfos for testing)
-	- time interval
 
 # Reference
 - virustotal_api.py
