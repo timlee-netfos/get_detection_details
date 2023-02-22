@@ -11,8 +11,8 @@ from datetime import datetime
 from termcolor import colored
 
 ############## global variable start ##############
-detection_type = ["c2_web_beaconing"]
-detection_directory = ["c2_detections_record", "c2_ip_record"]
+detection_type = ["hacking_tools"]
+detection_directory = ["hacking_tools_detections_record", "hacking_tools_ip_record"]
 pd.set_option('display.max_rows', None)
 ############## global variable end   ##############
 
@@ -38,27 +38,31 @@ API.detection_details(detection_type, detection_directory[0])
 
 # filter out private ip, then check if other ip malicious and make a report
 with open(f"{detection_directory[0]}/{API.start_time}~{API.end_time}.json", "r") as fr:
-    c2_detections = json.load(fr)
+    hacking_tools_detections = json.load(fr)
 
-offender = []
-ip_df = pd.DataFrame()
+hacking_tools = []
+hacking_ip = []
 
-for d in c2_detections:
-    for p in d["participants"]:
-        if p["role"] == "offender":
-            offender.append(p["object_value"])
+for d in hacking_tools_detections:
+    hacking_tools.append(d["properties"]["hacking_tool_name"])
+    for participant in d["participants"]:
+        if participant["role"] == "offender":
+            hacking_ip.append(participant["object_value"])
 
-print("working on ---> virustotal query")
-vt_dfs = []
-for ip in offender:
-    if ipaddress.ip_address(ip).is_private==False:
-        vt_df = virustotal_api.virustotal_Ip(ip).T 
-        vt_dfs.append(vt_df)
-ip_df = pd.concat(vt_dfs)
+hacking_dict = {
+    "hacking_tools_domain": hacking_tools,
+    "hacking_ip": hacking_ip
+}
+df = pd.DataFrame(hacking_dict).sort_values(by=["hacking_tools_domain"])
 
-# save and print the report
-ip_df = ip_df.set_index('ip')
-ip_df.to_csv(f"{detection_directory[1]}/{API.start_time}~{API.end_time}.csv")
-print(ip_df["security vendors' analysis"])
+report = ""
+for i in set(hacking_tools):
+    report += i
+    suspicious_ip = "\n".join([k for k in df[df.hacking_tools_domain == i]["hacking_ip"].tolist()])
+    report += f"\n{suspicious_ip}\n"
+    report += "\n"
 
+with open(f"{detection_directory[1]}/{API.start_time}~{API.end_time}.txt", "w") as fw:
+    fw.write(report)
 
+print(report)
