@@ -1,3 +1,8 @@
+# Introduction
+- Access ExtroHop API in order to finish daily monitoring and regular reports
+- practice oop 
+- build setting automation instead of adding configuration manually
+
 # Modules Installation
 - Python version: 3.9 or above
 - install modules
