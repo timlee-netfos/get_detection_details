@@ -55,7 +55,7 @@ hacking_dict = {
 }
 df = pd.DataFrame(hacking_dict).sort_values(by=["hacking_tools_domain"])
 
-report = ""
+report = f"{API.customer} {API.start_time}~{API.end_time}\n\n"
 for i in set(hacking_tools):
     report += i
     suspicious_ip = "\n".join([k for k in df[df.hacking_tools_domain == i]["hacking_ip"].tolist()])
