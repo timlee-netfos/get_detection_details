@@ -54,6 +54,7 @@ hacking_dict = {
     "hacking_ip": hacking_ip
 }
 df = pd.DataFrame(hacking_dict).sort_values(by=["hacking_tools_domain"])
+df = df.drop_duplicates()
 
 report = f"{API.customer} {API.start_time}~{API.end_time}\n\n"
 for i in set(hacking_tools):

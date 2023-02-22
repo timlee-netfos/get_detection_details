@@ -4,7 +4,7 @@ import json
 from dotenv import load_dotenv
 import os
 import pandas as pd
-from lib import virustotal_api
+from lib.virustotal_api import virustotal_api
 from lib.extrahop_api import detection_details
 import ipaddress
 from datetime import datetime
@@ -25,40 +25,45 @@ for d in detection_directory:
 ############## initial end   ##############
 
 # create api application
-API = detection_details()
+ExtraHop_API = detection_details()
+vt_API = virustotal_api()
 
 # get essential variables
-API.get_token()
-API.get_start_time()
-API.get_end_time()
+ExtraHop_API.get_token()
+ExtraHop_API.get_start_time()
+ExtraHop_API.get_end_time()
 
 # use GET method to get c2-web-beaconing detections data from extrahop cloud
-API.detection_details(detection_type, detection_directory[0])
+ExtraHop_API.detection_details(detection_type, detection_directory[0])
 
 
 # filter out private ip, then check if other ip malicious and make a report
-with open(f"{detection_directory[0]}/{API.start_time}~{API.end_time}.json", "r") as fr:
+with open(f"{detection_directory[0]}/{ExtraHop_API.start_time}~{ExtraHop_API.end_time}.json", "r") as fr:
     c2_detections = json.load(fr)
 
 offender = []
-ip_df = pd.DataFrame()
 
 for d in c2_detections:
     for p in d["participants"]:
         if p["role"] == "offender":
             offender.append(p["object_value"])
 
-print("working on ---> virustotal query")
-vt_dfs = []
-for ip in offender:
-    if ipaddress.ip_address(ip).is_private==False:
-        vt_df = virustotal_api.virustotal_Ip(ip).T 
-        vt_dfs.append(vt_df)
-ip_df = pd.concat(vt_dfs)
+print(len(offender))
+
+ip_df = vt_API.multiple_ip_check(offender)
+print(ip_df["security vendors' analysis"])
+ip_df.to_csv(f"{detection_directory[1]}/{ExtraHop_API.start_time}~{ExtraHop_API.end_time}.csv")
+
+# print("working on ---> virustotal query")
+# vt_dfs = []
+# for ip in offender:
+#     if ipaddress.ip_address(ip).is_private==False:
+#         vt_df = virustotal_api.virustotal_Ip(ip).T 
+#         vt_dfs.append(vt_df)
+# ip_df = pd.concat(vt_dfs)
 
 # save and print the report
-ip_df = ip_df.set_index('ip')
-ip_df.to_csv(f"{detection_directory[1]}/{API.start_time}~{API.end_time}.csv")
-print(ip_df["security vendors' analysis"])
+# ip_df.to_csv(f"{detection_directory[1]}/{ExtraHop_API.start_time}~{ExtraHop_API.end_time}.csv")
+# print(ip_df["security vendors' analysis"])
 
 

@@ -13,4 +13,4 @@ hacking_tools_detections_record
 hacking_tools_ip_record
 
 # test code
-test.py 
+test*
