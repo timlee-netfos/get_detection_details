@@ -6,6 +6,7 @@ import os
 from dotenv import load_dotenv
 from datetime import datetime
 import ipaddress
+from termcolor import colored
 
 # rewrite from Python Automated VT API v3 IP address and URL analysis 2.0 by Brett Fullam
 # can get entire python files by $ git clone https://github.com/b-fullam/Automating-VirusTotal-APIv3-for-IPs-and-URLs.git
@@ -23,9 +24,12 @@ class virustotal_api:
         self.API_URL = None
         self.ip_df = None
         self.vt_dfs = []
+        self.unable_check_ip = []
+        self.malicious_ip = []
+        self.private_ip = []
         
     def virustotal_Ip(self, Ip):
-        print("working on ---> {}".format(Ip))
+        print("\tworking on ---> {}".format(Ip))
         # amend the virustotal apiv3 url to include the unique generated url_id
         self.API_URL = "https://www.virustotal.com/api/v3/ip_addresses/" + Ip
 
@@ -34,20 +38,22 @@ class virustotal_api:
             "Accept": "application/json",
             "x-apikey": self.API_KEY
         }
-        response = requests.get(self.API_URL, headers=headers)
-        print(response.json())
-        if response.json() == []:
-            print(f"KeyError: {Ip}")
-            return None
-        # strip the "data" and "attribute" keys from the decodedResponse dictionary and only include the keys listed within "attributes" to create a more concise list stored in a new dictionary called a_json
+        response = requests.get(self.API_URL, headers=headers).json()
+        data_key = "data"
+        if response.get(data_key):
+            data = response["data"]["attributes"]
         else:
-            data = (response.json()["data"]["attributes"])
+            print(f"Unable to check ip {Ip}")
+            self.unable_check_ip.append(Ip)
+            return None
         
-
         # simplify last_analysis_stats attribute in order to further usage
         # get malicious detection
         last_analysis_malicious = data['last_analysis_stats']['malicious']
         last_analysis_all = sum(data['last_analysis_stats'].values())
+        if last_analysis_malicious > 0:
+            self.malicious_ip.append(Ip)
+            print(colored(f"\t{Ip}: {last_analysis_malicious}/{last_analysis_all}", "red"))
 
         data["security vendors' analysis"] = f'{last_analysis_malicious}/{last_analysis_all}'
         data['ip'] = Ip
@@ -57,18 +63,20 @@ class virustotal_api:
         df = pd.DataFrame([data])
         df = df.set_index('ip', drop=False)
 
-        return df.T
+        return df
 
     def multiple_ip_check(self, ips):
         print("working on ---> virustotal ip check")
         # ip must in list
-        for ip in ips:
-            if ipaddress.ip_address(ip).is_private == False:
+        for ip in set(ips):
+            if ipaddress.ip_address(ip).is_private == True:
+                self.private_ip.append(ip)
+                continue
+            elif ip in self.unable_check_ip:
+                continue
+            else:
                 vt_df = self.virustotal_Ip(ip)
-                if vt_df == None:
-                    continue
-                else:
-                    self.vt_dfs.append(vt_df.T)
+                self.vt_dfs.append(vt_df)
         self.ip_df = pd.concat(self.vt_dfs)
         self.ip_df = self.ip_df.set_index("ip")
         

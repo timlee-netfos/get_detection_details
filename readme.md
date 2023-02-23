@@ -15,8 +15,11 @@ $ pip install -r requirements.txt
 ```powershell
 $ python \path\to\directory\c2_ip_inspect.py
 ```
+- first time execution
+	- input api configuration
+	- input virustotal api key
 - input variables
-	- customer name (input netfos for testing)
+	- customer name (netfos for testing)
 	- time interval
 
 # .env Configuration
