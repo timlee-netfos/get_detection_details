@@ -11,8 +11,15 @@ from datetime import datetime, timedelta
 from termcolor import colored
 
 ############## global variable start ##############
-detection_type = ["c2_web_beaconing"]
-detection_directory = ["./detection_details/{}".format(detection_type[0]), "./ip_record/{}".format(detection_type[0])]
+all_detections = pd.read_csv("./data/detection_catalog.csv")["type"].tolist()
+while True:
+    detection_type = [input("detection type: ")]
+    if detection_type[0] in all_detections:
+        break
+    else:
+        print(colored("Invalid input. Please try again.", "red"))
+        continue
+detection_directory = ["./detection_details/{}".format(detection_type[0])]
 pd.set_option('display.max_rows', None)
 ############## global variable end   ##############
 
@@ -39,30 +46,5 @@ ExtraHop_API.detection_details(detection_type, detection_directory[0])
 
 # filter out private ip, then check if other ip malicious and make a report
 with open(f"{detection_directory[0]}/{ExtraHop_API.start_time}~{ExtraHop_API.end_time}.json", "r") as fr:
-    c2_detections = json.load(fr)
-
-offender = []
-
-for d in c2_detections:
-    for p in d["participants"]:
-        if p["role"] == "offender":
-            offender.append(p["object_value"])
-
-print("ip amount:", len(offender))
-if len(offender) > 250:
-    overquota = input(colored("[WARNING] IP AMOUNT IS OVER VIRUSTOTAL QUOTA. CONTINUE? (Y/N) ", "yellow"))
-    if overquota.upper() == "Y":
-        pass
-    elif overquota.upper() == "N":
-        print(colored("Program Terminated", "red"))
-        exit(1)
-    else:
-        print(colored("Invaled input. Program Terminated", "red"))
-
-ip_df = vt_API.multiple_ip_check(offender)
-print("done!")
-print(f"private ip:" + "\n".join(vt_API.private_ip))
-print(colored("\n[MALICIOUS IP]\n", "red") + "\n".join(vt_API.malicious_ip))
-print(colored("[UNABLE TO ANALYZE]\n", "yellow") + "\n".join(vt_API.unable_check_ip))
-ip_df.to_csv(f"{detection_directory[1]}/{ExtraHop_API.start_time}~{ExtraHop_API.end_time}.csv")
+    detections = json.load(fr)
 

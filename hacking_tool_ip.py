@@ -12,7 +12,7 @@ from termcolor import colored
 
 ############## global variable start ##############
 detection_type = ["hacking_tools"]
-detection_directory = ["hacking_tools_detections_record", "hacking_tools_ip_record"]
+detection_directory = ["./detection_details/{}".format(detection_type[0]), "./ip_record/{}".format(detection_type[0])]
 pd.set_option('display.max_rows', None)
 ############## global variable end   ##############
 

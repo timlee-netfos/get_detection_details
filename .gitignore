@@ -7,10 +7,8 @@ __pycache__
 .obsidian
 
 # records
-c2_detections_record
-c2_ip_record
-hacking_tools_detections_record
-hacking_tools_ip_record
+detection_details
+ip_record
 
 # test code
 test*
