@@ -29,7 +29,6 @@ class virustotal_api:
         self.private_ip = []
         
     def virustotal_Ip(self, Ip):
-        print("\tworking on ---> {}".format(Ip))
         # amend the virustotal apiv3 url to include the unique generated url_id
         self.API_URL = "https://www.virustotal.com/api/v3/ip_addresses/" + Ip
 
@@ -79,6 +78,9 @@ class virustotal_api:
                 self.vt_dfs.append(vt_df)
         self.ip_df = pd.concat(self.vt_dfs)
         self.ip_df = self.ip_df.set_index("ip")
+
+        # use cache?
+        # use other data structure?
         
         return self.ip_df
 

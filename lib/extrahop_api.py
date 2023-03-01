@@ -186,7 +186,9 @@ class detection_details(ExtrahopApi):
         with open(f"{directory}/{self.start_time}~{self.end_time}.json", "w") as fw:
             json.dump(detections, fw)
     
-
+class metrics(ExtrahopApi):
+    def __init__(self):
+        super().__init__()
 
 
 
