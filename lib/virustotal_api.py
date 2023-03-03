@@ -17,12 +17,8 @@ from termcolor import colored
 # this is the function that will take user input or input from a list to submit urls/ips to VirusTotal for url/ip reports, receive and format the returned json for generating our html reports
 class virustotal_api:
     def __init__(self):
-        # load_dotenv will look for a .env file and if it finds one it will load the environment variables from it
-        self.API_KEY = None
         self.API_URL = "https://www.virustotal.com/api/v3/ip_addresses/"
-        self.ip_df = None
-        self.vt_dfs = []
-        self.unable_check_ip = []
+        self.data = []
         self.malicious_ip = []
         self.private_ip = []
         self.load_vt_API_KEY()
@@ -84,33 +80,35 @@ class virustotal_api:
         data["security vendors' analysis"] = f'{last_analysis_malicious}/{last_analysis_all}'
         data['ip'] = Ip
 
-        # create a dataframe with the remaining keys stored in the filteredResponse dictionary
-        # orient="index" is necessary in order to list the index of attribute keys as rows and not as columns
-        df = pd.DataFrame([data])
-        df = df.set_index('ip', drop=False)
+        self.data.append(data)
 
-        return df
+        return None
 
     def multiple_ip_check(self, ips):
         print("working on ---> virustotal ip check")
+        with open("data/unable_check_ip.txt", "r") as fr:
+            self.unable_check_ip = fr.read().split("\n")
         # ip must in list
         for ip in set(ips):
             if ipaddress.ip_address(ip).is_private == True:
                 self.private_ip.append(ip)
                 continue
-            elif ip in self.unable_check_ip:
-                continue
             else:
-                vt_df = self.virustotal_Ip(ip)
-                self.vt_dfs.append(vt_df)
-        self.ip_df = pd.concat(self.vt_dfs)
-        self.ip_df = self.ip_df.set_index("ip")
+                self.virustotal_Ip(ip)
+        self.ip_df = pd.DataFrame(self.data)
+
+        with open("data/unable_chekc_ip.txt", "w") as fw:
+            fw.write("\n".join(self.unable_check_ip))
+
+        print("done!")
+        print(f"private ip:" + "\n".join(self.private_ip))
+        print(colored("\n[MALICIOUS IP]\n", "red") + "\n".join(self.malicious_ip))
+        print(colored("[UNABLE TO ANALYZE]\n", "yellow") + "\n".join(self.unable_check_ip))
 
         # use cache?
         # use other data structure?
-        
-        return self.ip_df
 
+        return None
 
 # ////////////////////////////////// END URL REPORT REQUEST
 

@@ -49,9 +49,6 @@ if len(offender) > 250:
     else:
         print(colored("Invaled input. Program Terminated", "red"))
 
-ip_df = vt_API.multiple_ip_check(offender)
-print("done!")
-print(f"private ip:" + "\n".join(vt_API.private_ip))
-print(colored("\n[MALICIOUS IP]\n", "red") + "\n".join(vt_API.malicious_ip))
-print(colored("[UNABLE TO ANALYZE]\n", "yellow") + "\n".join(vt_API.unable_check_ip))
-ip_df.to_csv(f"{detection_directory[1]}/{ExtraHop_API.start_time}~{ExtraHop_API.end_time}.csv")
+vt_API.multiple_ip_check(offender)
+
+vt_API.ip_df.to_csv(f"{detection_directory[1]}/{ExtraHop_API.start_time}~{ExtraHop_API.end_time}.csv")
