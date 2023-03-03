@@ -24,22 +24,12 @@ for d in detection_directory:
         os.mkdir(d)
 ############## initial end   ##############
 
-# create api application
+# create extrahop api application
 ExtraHop_API = detection_details()
 vt_API = virustotal_api()
 
-# get essential variables
-ExtraHop_API.get_token()
-ExtraHop_API.get_start_time()
-ExtraHop_API.get_end_time()
-
 # use GET method to get c2-web-beaconing detections data from extrahop cloud
-ExtraHop_API.detection_details(detection_type, detection_directory[0])
-
-
-# filter out private ip, then check if other ip malicious and make a report
-with open(f"{detection_directory[0]}/{ExtraHop_API.start_time}~{ExtraHop_API.end_time}.json", "r") as fr:
-    c2_detections = json.load(fr)
+c2_detections = ExtraHop_API.detection_details(detection_type, detection_directory[0])
 
 offender = []
 
@@ -65,4 +55,3 @@ print(f"private ip:" + "\n".join(vt_API.private_ip))
 print(colored("\n[MALICIOUS IP]\n", "red") + "\n".join(vt_API.malicious_ip))
 print(colored("[UNABLE TO ANALYZE]\n", "yellow") + "\n".join(vt_API.unable_check_ip))
 ip_df.to_csv(f"{detection_directory[1]}/{ExtraHop_API.start_time}~{ExtraHop_API.end_time}.csv")
-

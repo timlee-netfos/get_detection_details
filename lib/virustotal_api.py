@@ -18,26 +18,53 @@ from termcolor import colored
 class virustotal_api:
     def __init__(self):
         # load_dotenv will look for a .env file and if it finds one it will load the environment variables from it
-        load_dotenv()
-        # retrieve API key from .env file and store in a variable
-        self.API_KEY = os.getenv("vt_API_KEY")
-        self.API_URL = None
+        self.API_KEY = None
+        self.API_URL = "https://www.virustotal.com/api/v3/ip_addresses/"
         self.ip_df = None
         self.vt_dfs = []
         self.unable_check_ip = []
         self.malicious_ip = []
         self.private_ip = []
-        
+        self.load_vt_API_KEY()
+    
+    def load_vt_API_KEY(self):
+        load_dotenv()
+        try_times = 3
+        while try_times > 0:
+            if os.getenv("vt_API_KEY") == None:
+                print(colored("[新增 virustotal API KEY]", "green"))
+                self.API_KEY = input("請輸入 virustotal API KEY: ")
+                headers = {
+                    "Accept": "application/json",
+                    "x-apikey": self.API_KEY
+                }
+                r = requests.get(self.API_URL+"8.8.8.8", headers=headers).status_code
+                if r >= 200 and r < 300:
+                    with open("lib/.env", "a") as fa:
+                        fa.write(f"\nvt_API_KEY={self.API_KEY}")
+                    print(colored("新增 virustotal API KEY 成功!", "green"))
+                    return None
+                else:
+                    print(f"HTTP status code:", colored(r, "yellow"))
+                    print(colored("輸入錯誤，請重新輸入", "red"))
+                    try_times -= 1
+                    continue
+            else:
+                self.API_KEY = os.getenv("vt_API_KEY")
+                return None
+        print(colored("錯誤次數已達 3 次，程式終止", "yellow"))
+        exit(1)
+
     def virustotal_Ip(self, Ip):
         # amend the virustotal apiv3 url to include the unique generated url_id
-        self.API_URL = "https://www.virustotal.com/api/v3/ip_addresses/" + Ip
+        URL = self.API_URL + Ip
 
         # while you can enter your API key directly for the "x-apikey" it's not recommended as a "best practice" and should be stored-accessed separately in a .env file (see comment under "load_dotenv()"" for more information
         headers = {
             "Accept": "application/json",
             "x-apikey": self.API_KEY
         }
-        response = requests.get(self.API_URL, headers=headers).json()
+        response = requests.get(URL, headers=headers).json()
         data_key = "data"
         if response.get(data_key):
             data = response["data"]["attributes"]

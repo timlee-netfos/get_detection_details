@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 import pandas as pd
 from lib.virustotal_api import virustotal_api
-from lib.extrahop_api import detection_details
+from lib.extrahop_api import detection_details, monthly_report
 import ipaddress
 from datetime import datetime, timedelta
 from termcolor import colored
@@ -13,8 +13,11 @@ from termcolor import colored
 ############## global variable start ##############
 all_detections = pd.read_csv("./data/detection_catalog.csv")["type"].tolist()
 while True:
-    detection_type = [input("detection type: ")]
-    if detection_type[0] in all_detections:
+    detection_type = [input("detection type (if all, input all): ")]
+    if detection_type[0].lower() == "all":
+        detection_type = "all_type"
+        break
+    elif detection_type[0] in all_detections:
         break
     else:
         print(colored("Invalid input. Please try again.", "red"))
@@ -41,10 +44,15 @@ ExtraHop_API.get_start_time()
 ExtraHop_API.get_end_time()
 
 # use GET method to get c2-web-beaconing detections data from extrahop cloud
-ExtraHop_API.detection_details(detection_type, detection_directory[0])
+if detection_type == "all_type":
+    detections = ExtraHop_API.get_info("detections").json()
+else:
+    detections = ExtraHop_API.detection_details(detection_type, detection_directory[0])
+
+print(len(detections))
 
 
-# filter out private ip, then check if other ip malicious and make a report
-with open(f"{detection_directory[0]}/{ExtraHop_API.start_time}~{ExtraHop_API.end_time}.json", "r") as fr:
-    detections = json.load(fr)
 
+
+# for d in detections:
+#     for p in d["participants"]:

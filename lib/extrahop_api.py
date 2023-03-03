@@ -21,7 +21,6 @@ class ExtrahopApi:
     
     def check_env(self):
         if not os.path.isfile("lib/.env"):
-            self.vt_API_KEY()
             self.new_customer()
         else:
             self.load_customer()
@@ -65,34 +64,7 @@ class ExtrahopApi:
             with open("data/customers.txt", "a") as fa:
                 fa.write(f"\n{self.customer}")
             print(colored("新增客戶成功!", "green"))
-            return None
-            
-        
-
-    def vt_API_KEY(self):
-        try_times = 3
-        while try_times > 0:
-            print(colored("[新增 virustotal API KEY]", "green"))
-            vt_API_KEY = input("請輸入 virustotal API KEY: ")
-            headers = {
-                "Accept": "application/json",
-                "x-apikey": vt_API_KEY
-            }
-            r = requests.get("https://www.virustotal.com/api/v3/ip_addresses/8.8.8.8", headers=headers).status_code
-            if r >= 200 and r < 300:
-                load_dotenv()
-                with open("lib/.env", "a") as fa:
-                    fa.write(f"\nvt_API_KEY={vt_API_KEY}")
-                print(colored("新增 virustotal API KEY 成功!", "green"))
-                return None
-            else:
-                print(colored("輸入錯誤，請重新輸入", "red"))
-                try_times -= 1
-                continue
-        print(colored("錯誤次數已達 3 次，程式終止", "yellow"))
-        exit(1)
-            
-    
+            return None    
 
     def load_config(self):
         self.HOST = os.getenv(f"{self.customer}_HOST")
@@ -130,8 +102,10 @@ class ExtrahopApi:
 class detection_details(ExtrahopApi):
     def __init__(self):
         super().__init__()
-        self.start_time = None
-        self.end_time = None
+        self.get_start_time()
+        self.get_end_time()
+        self.get_token()
+        
     def get_start_time(self):
         self.start_time = input("請輸入開始時間(yyyymmdd): ")
         pattern = r'^\d{8}$'
@@ -185,7 +159,44 @@ class detection_details(ExtrahopApi):
 
         with open(f"{directory}/{self.start_time}~{self.end_time}.json", "w") as fw:
             json.dump(detections, fw)
-    
+        
+        return detections
+
+class monthly_report(ExtrahopApi):
+    def __init__(self):
+        super().__init__()
+        self.Other_OA = []
+        self.RDC = None
+        self.SDLC = None
+        self.DC = None
+        self.Cyberark = None
+        self.Branch_Office = None
+        self.VPN = None
+
+    def get_main_devicegroups(self):
+        device_group_details = self.get_info("devicegroups").json()
+        with open("data/device_groups.json", "w") as fw:
+            json.dump(device_group_details, fw)
+        for group in device_group_details:
+            if group["name"] == "RDC":
+                self.RDC = [i["operand"] for i in group["filter"]["rules"]]
+            elif group["name"] == "SDLC":
+                self.SDLC = [i["operand"] for i in group["filter"]["rules"]]
+            elif group["name"] == "DC":
+                self.DC = [i["operand"] for i in group["filter"]["rules"]]
+            elif group["name"] == "Cyberark":
+                self.Cyberark = [i["operand"] for i in group["filter"]["rules"]]
+            elif group["name"] == "Branch Office":
+                self.Branch_Office = [i["operand"] for i in group["filter"]["rules"]]
+            elif group["name"] == "VPN":
+                self.VPN = [i["operand"] for i in group["filter"]["rules"]]
+            else:
+                try:
+                    self.Other_OA.extend([i["operand"] for i in group["filter"]["rules"]])
+                except (KeyError, TypeError):
+                    pass
+        return device_group_details
+
 class metrics(ExtrahopApi):
     def __init__(self):
         super().__init__()

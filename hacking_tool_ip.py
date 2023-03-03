@@ -27,18 +27,8 @@ for d in detection_directory:
 # create api application
 API = detection_details()
 
-# get essential variables
-API.get_token()
-API.get_start_time()
-API.get_end_time()
-
 # use GET method to get c2-web-beaconing detections data from extrahop cloud
-API.detection_details(detection_type, detection_directory[0])
-
-
-# filter out private ip, then check if other ip malicious and make a report
-with open(f"{detection_directory[0]}/{API.start_time}~{API.end_time}.json", "r") as fr:
-    hacking_tools_detections = json.load(fr)
+hacking_tools_detections = API.detection_details(detection_type, detection_directory[0])
 
 hacking_tools = []
 hacking_ip = []
