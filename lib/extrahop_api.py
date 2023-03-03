@@ -17,7 +17,7 @@ class ExtrahopApi:
         self.check_env()
         self.get_start_time()
         self.get_end_time()
-        self.get_token
+        self.get_token()
     
     def check_env(self):
         if not os.path.isfile("lib/.env"):

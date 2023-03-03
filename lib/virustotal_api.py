@@ -21,6 +21,7 @@ class virustotal_api:
         self.data = []
         self.malicious_ip = []
         self.private_ip = []
+        self.unable_check_ip = []
         self.load_vt_API_KEY()
     
     def load_vt_API_KEY(self):
@@ -86,8 +87,11 @@ class virustotal_api:
 
     def multiple_ip_check(self, ips):
         print("working on ---> virustotal ip check")
-        with open("data/unable_check_ip.txt", "r") as fr:
-            self.unable_check_ip = fr.read().split("\n")
+        try:
+            with open("data/unable_check_ip.txt", "r") as fr:
+                self.unable_check_ip = fr.read().split("\n")
+        except FileNotFoundError:
+            pass
         # ip must in list
         for ip in set(ips):
             if ipaddress.ip_address(ip).is_private == True:
@@ -97,8 +101,11 @@ class virustotal_api:
                 self.virustotal_Ip(ip)
         self.ip_df = pd.DataFrame(self.data)
 
-        with open("data/unable_chekc_ip.txt", "w") as fw:
-            fw.write("\n".join(self.unable_check_ip))
+        if len(self.unable_check_ip) == 0:
+            pass
+        else:
+            with open("data/unable_chekc_ip.txt", "w") as fw:
+                fw.write("\n".join(self.unable_check_ip))
 
         print("done!")
         print(f"private ip:" + "\n".join(self.private_ip))
