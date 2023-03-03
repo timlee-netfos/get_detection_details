@@ -14,30 +14,16 @@ import json
 
 class ExtrahopApi:
     def __init__(self):
-        # load confidential information from lib/.env
-        load_dotenv()
         self.check_env()
-        self.token = None
+        self.get_start_time()
+        self.get_end_time()
+        self.get_token
     
     def check_env(self):
         if not os.path.isfile("lib/.env"):
             self.new_customer()
         else:
-            self.load_customer()
             self.load_config()
-
-    def load_customer(self):
-        with open("data/customers.txt", "r") as fr:
-            customers = fr.read().strip("\n")
-        while True:
-            self.customer = input("請輸入客戶名稱: ")
-            if self.customer not in customers:
-                check_wrong_customer = input(f"目前不存在客戶名稱 " + colored(f"{self.customer}", "blue") + "\n1. 新增客戶 2. 重新輸入: ")
-                if check_wrong_customer == "1":
-                    self.new_customer()
-                    break
-            else: 
-                break
 
     def new_customer(self):
         try_times = 3
@@ -67,45 +53,22 @@ class ExtrahopApi:
             return None    
 
     def load_config(self):
+        with open("data/customers.txt", "r") as fr:
+            customers = fr.read().strip("\n")
+        while True:
+            self.customer = input("請輸入客戶名稱: ")
+            if self.customer not in customers:
+                check_wrong_customer = input(f"目前不存在客戶名稱 " + colored(f"{self.customer}", "blue") + "\n1. 新增客戶 2. 重新輸入: ")
+                if check_wrong_customer == "1":
+                    self.new_customer()
+                    break
+            else: 
+                break
+        load_dotenv()
         self.HOST = os.getenv(f"{self.customer}_HOST")
         self.ID = os.getenv(f"{self.customer}_ID")
         self.SECRET = os.getenv(f"{self.customer}_SECRET")            
     
-    def get_token(self):
-        # get token to access ExtraHop REST API
-        auth = base64.b64encode(bytes(self.ID + ":" + self.SECRET, "utf-8")).decode("utf-8")
-        headers = {
-            "Authorization": "Basic " + auth,
-            "Content-Type": "application/x-www-form-urlencoded",
-        }
-        url = self.HOST + "/oauth2/token"
-        r = requests.post(
-            url, headers=headers, data="grant_type=client_credentials",
-        )
-        self.token = r.json()["access_token"]
-        return self.token
-    
-    def get_info(self, page):
-        # use GET method to get data
-        headers = {"Authorization": "Bearer " + self.token}
-        url = self.HOST + "/api/v1" + f"/{page}"
-        r = requests.get(url, headers=headers)
-        return r
-    
-    def post_info(self, page, payload):
-        # use POST method to get data
-        headers = {"Authorization": "Bearer " + self.token}
-        url = self.HOST + "/api/v1" + f"/{page}"
-        r = requests.post(url, headers=headers, json=payload)
-        return r
-
-class detection_details(ExtrahopApi):
-    def __init__(self):
-        super().__init__()
-        self.get_start_time()
-        self.get_end_time()
-        self.get_token()
-        
     def get_start_time(self):
         self.start_time = input("請輸入開始時間(yyyymmdd): ")
         pattern = r'^\d{8}$'
@@ -133,6 +96,37 @@ class detection_details(ExtrahopApi):
             else:
                 self.end_time = input(colored("日期錯誤，請輸入日期格式 yyyymmdd: ", "yellow"))
         return self.end_time
+
+    def get_token(self):
+        # get token to access ExtraHop REST API
+        auth = base64.b64encode(bytes(self.ID + ":" + self.SECRET, "utf-8")).decode("utf-8")
+        headers = {
+            "Authorization": "Basic " + auth,
+            "Content-Type": "application/x-www-form-urlencoded",
+        }
+        url = self.HOST + "/oauth2/token"
+        r = requests.post(
+            url, headers=headers, data="grant_type=client_credentials",
+        )
+        self.token = r.json()["access_token"]
+    
+    def get_info(self, page):
+        # use GET method to get data
+        headers = {"Authorization": "Bearer " + self.token}
+        url = self.HOST + "/api/v1" + f"/{page}"
+        r = requests.get(url, headers=headers)
+        return r
+    
+    def post_info(self, page, payload):
+        # use POST method to get data
+        headers = {"Authorization": "Bearer " + self.token}
+        url = self.HOST + "/api/v1" + f"/{page}"
+        r = requests.post(url, headers=headers, json=payload)
+        return r
+
+class detection_details(ExtrahopApi):
+    def __init__(self):
+        super().__init__()
             
     # get detection details in a time range
     def detection_details(self, detection_type, directory):
@@ -165,15 +159,10 @@ class detection_details(ExtrahopApi):
 class monthly_report(ExtrahopApi):
     def __init__(self):
         super().__init__()
-        self.Other_OA = []
-        self.RDC = None
-        self.SDLC = None
-        self.DC = None
-        self.Cyberark = None
-        self.Branch_Office = None
-        self.VPN = None
+        self.get_main_devicegroups()
 
     def get_main_devicegroups(self):
+        print("working on ---> get main devicegroups")
         device_group_details = self.get_info("devicegroups").json()
         with open("data/device_groups.json", "w") as fw:
             json.dump(device_group_details, fw)
