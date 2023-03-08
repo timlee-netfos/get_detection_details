@@ -15,12 +15,11 @@ import json
 class ExtrahopApi:
     def __init__(self):
         self.check_env()
-        self.get_start_time()
-        self.get_end_time()
         self.get_token()
     
     def check_env(self):
         if not os.path.isfile("lib/.env"):
+            os.system("pip install -r requirements.txt")
             self.new_customer()
         else:
             self.load_config()
@@ -127,6 +126,8 @@ class ExtrahopApi:
 class detection_details(ExtrahopApi):
     def __init__(self):
         super().__init__()
+        self.get_start_time()
+        self.get_end_time()
             
     # get detection details in a time range
     def detection_details(self, detection_type, directory):

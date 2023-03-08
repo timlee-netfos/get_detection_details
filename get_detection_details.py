@@ -40,8 +40,6 @@ vt_API = virustotal_api()
 
 # get essential variables
 ExtraHop_API.get_token()
-ExtraHop_API.get_start_time()
-ExtraHop_API.get_end_time()
 
 # use GET method to get c2-web-beaconing detections data from extrahop cloud
 if detection_type == "all_type":
