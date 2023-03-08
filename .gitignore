@@ -10,6 +10,7 @@ __pycache__
 detection_details
 ip_record
 *.json
+data/unable_check_ip.txt
 
 # test code
 test*

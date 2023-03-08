@@ -104,7 +104,7 @@ class virustotal_api:
         if len(self.unable_check_ip) == 0:
             pass
         else:
-            with open("data/unable_chekc_ip.txt", "w") as fw:
+            with open("data/unable_check_ip.txt", "w") as fw:
                 fw.write("\n".join(self.unable_check_ip))
 
         print("done!")
