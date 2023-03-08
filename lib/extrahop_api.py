@@ -122,15 +122,18 @@ class ExtrahopApi:
         url = self.HOST + "/api/v1" + f"/{page}"
         r = requests.post(url, headers=headers, json=payload)
         return r
+    
+    def patch_info(self, page, payload):
+        # use PATCH method to get data
+        headers = {"Authorization": "Bearer " + self.token}
+        url = self.HOST + "/api/v1" + f"/{page}"
+        r = requests.patch(url, headers=headers, json=payload)
+        return r
 
-class detection_details(ExtrahopApi):
-    def __init__(self):
-        super().__init__()
-        self.get_start_time()
-        self.get_end_time()
-            
     # get detection details in a time range
     def detection_details(self, detection_type, directory):
+        self.get_start_time()
+        self.get_end_time()
         print("working on ---> requests.post")
         payload = {
             "filter": {
@@ -153,20 +156,15 @@ class detection_details(ExtrahopApi):
         detections = self.post_info("detections/search", payload).json()
 
         with open(f"{directory}/{self.start_time}~{self.end_time}.json", "w") as fw:
-            json.dump(detections, fw)
+            json.dump(detections, fw, indent=4)
         
         return detections
-
-class monthly_report(ExtrahopApi):
-    def __init__(self):
-        super().__init__()
-        self.get_main_devicegroups()
 
     def get_main_devicegroups(self):
         print("working on ---> get main devicegroups")
         device_group_details = self.get_info("devicegroups").json()
         with open("data/device_groups.json", "w") as fw:
-            json.dump(device_group_details, fw)
+            json.dump(device_group_details, fw, indent=4)
         for group in device_group_details:
             if group["name"] == "RDC":
                 self.RDC = [i["operand"] for i in group["filter"]["rules"]]
@@ -187,9 +185,6 @@ class monthly_report(ExtrahopApi):
                     pass
         return device_group_details
 
-class metrics(ExtrahopApi):
-    def __init__(self):
-        super().__init__()
 
 
 

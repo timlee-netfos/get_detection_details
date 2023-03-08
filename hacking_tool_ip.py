@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 import pandas as pd
 from lib import virustotal_api
-from lib.extrahop_api import detection_details
+from lib.extrahop_api import ExtrahopApi
 import ipaddress
 from datetime import datetime
 from termcolor import colored
@@ -25,7 +25,7 @@ for d in detection_directory:
 ############## initial end   ##############
 
 # create api application
-API = detection_details()
+API = ExtrahopApi()
 
 # use GET method to get c2-web-beaconing detections data from extrahop cloud
 hacking_tools_detections = API.detection_details(detection_type, detection_directory[0])

@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 import pandas as pd
 from lib.virustotal_api import virustotal_api
-from lib.extrahop_api import detection_details, monthly_report
+from lib.extrahop_api import ExtrahopApi
 import ipaddress
 from datetime import datetime, timedelta
 from termcolor import colored
@@ -35,7 +35,7 @@ for d in detection_directory:
 ############## initial end   ##############
 
 # create api application
-ExtraHop_API = detection_details()
+ExtraHop_API = ExtrahopApi()
 vt_API = virustotal_api()
 
 # get essential variables
