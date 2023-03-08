@@ -9,7 +9,9 @@ __pycache__
 # records
 detection_details
 ip_record
+*.json
 
 # test code
 test*
 api_test.py 
+
