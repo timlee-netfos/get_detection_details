@@ -80,7 +80,6 @@ class ExtrahopApi:
                     self.start_time = input(colored("日期錯誤，請輸入日期格式 yyyymmdd: ", "yellow"))
             else:
                 self.start_time = input(colored("日期錯誤，請輸入日期格式 yyyymmdd: ", "yellow"))
-        return self.start_time
 
     def get_end_time(self):
         self.end_time = input("請輸入結束時間(yyyymmdd): ")
@@ -94,7 +93,6 @@ class ExtrahopApi:
                     self.end_time = input(colored("日期錯誤，請輸入日期格式 yyyymmdd: ", "yellow"))
             else:
                 self.end_time = input(colored("日期錯誤，請輸入日期格式 yyyymmdd: ", "yellow"))
-        return self.end_time
 
     def get_token(self):
         # get token to access ExtraHop REST API
@@ -128,7 +126,6 @@ class ExtrahopApi:
         headers = {"Authorization": "Bearer " + self.token}
         url = self.HOST + "/api/v1" + f"/{page}"
         r = requests.patch(url, headers=headers, json=payload)
-        return r
 
     # get detection details in a time range
     def detection_details(self, detection_type, directory):
