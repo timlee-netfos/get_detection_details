@@ -12,7 +12,7 @@ from termcolor import colored
 
 ############## global variable start ##############
 detection_type = ["c2_web_beaconing"]
-detection_directory = ["./detection_details/{}".format(detection_type[0]), "./ip_record/{}".format(detection_type[0])]
+detection_directory = ["./detection_details", "./ip_record", "./detection_details/{}".format(detection_type[0]), "./ip_record/{}".format(detection_type[0])]
 pd.set_option('display.max_rows', None)
 ############## global variable end   ##############
 
@@ -51,4 +51,4 @@ if len(offender) > 250:
 
 vt_API.multiple_ip_check(offender)
 
-vt_API.ip_df.to_csv(f"{detection_directory[1]}/{ExtraHop_API.start_time}~{ExtraHop_API.end_time}.csv")
+vt_API.ip_df.to_csv(f"{detection_directory[3]}/{ExtraHop_API.start_time}~{ExtraHop_API.end_time}.csv")

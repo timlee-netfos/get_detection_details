@@ -10,23 +10,9 @@ import ipaddress
 from datetime import datetime, timedelta
 from termcolor import colored
 
-
-
-
-
+# create application
 ExtraHop_API = ExtrahopApi()
 
-payload = {
-    "custom_criticality": "critical"
-}
-
-r = ExtraHop_API.patch_info("devices/60129551390", payload=payload)
-r1 = ExtraHop_API.get_info("devices/60129551390")
-print(r1.json())
-# payload["custom_criticality"] = "not_critical"
-# r = ExtraHop_API.patch_info("devices/60129551390", payload=payload)
-# r2 = ExtraHop_API.get_info("devices/60129551390")
-# print(r2.json())
-
-# r = ExtraHop_API.get_info("devicegroups/1")
-# print(r.json())
+# get devicegroup: New Devices (Last 7 Days)
+r = ExtraHop_API.get_info("devicegroups/1/devices")
+print(r.json())

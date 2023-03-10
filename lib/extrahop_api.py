@@ -19,7 +19,6 @@ class ExtrahopApi:
     
     def check_env(self):
         if not os.path.isfile("lib/.env"):
-            os.system("pip install -r requirements.txt")
             self.new_customer()
         else:
             self.load_config()
