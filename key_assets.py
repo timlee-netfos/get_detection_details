@@ -10,14 +10,17 @@ import ipaddress
 from datetime import datetime, timedelta
 from termcolor import colored
 
-
+# create application
 ExtraHop_API = ExtrahopApi()
 
+# payload of patch method to change criticality of device
 payload = {
     "custom_criticality": "critical"
 }
 
 key_assets_ip = []
+
+
 
 print("working on ---> get key assets id")
 r1 = ExtraHop_API.get_info("devices")

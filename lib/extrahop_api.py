@@ -62,7 +62,7 @@ class ExtrahopApi:
                     break
             else: 
                 break
-        load_dotenv()
+        load_dotenv("lib/.env")
         self.HOST = os.getenv(f"{self.customer}_HOST")
         self.ID = os.getenv(f"{self.customer}_ID")
         self.SECRET = os.getenv(f"{self.customer}_SECRET")            
@@ -106,11 +106,11 @@ class ExtrahopApi:
         )
         self.token = r.json()["access_token"]
     
-    def get_info(self, page):
+    def get_info(self, page, params=None):
         # use GET method to get data
         headers = {"Authorization": "Bearer " + self.token}
         url = self.HOST + "/api/v1" + f"/{page}"
-        r = requests.get(url, headers=headers)
+        r = requests.get(url, headers=headers, params=params)
         return r
     
     def post_info(self, page, payload):

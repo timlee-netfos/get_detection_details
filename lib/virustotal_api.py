@@ -25,7 +25,7 @@ class virustotal_api:
         self.load_vt_API_KEY()
     
     def load_vt_API_KEY(self):
-        load_dotenv()
+        load_dotenv("lib/.env")
         try_times = 3
         while try_times > 0:
             if os.getenv("vt_API_KEY") == None:
